@@ -1,15 +1,14 @@
-import styled from 'styled-components';
-import NxWelcome from './nx-welcome';
-
-const StyledApp = styled.div`
-  // Your style here
-`;
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Admin, Login } from '@form-exercise/core/web';
 
 export function App() {
   return (
-    <StyledApp>
-      <NxWelcome title="login-flow" />
-    </StyledApp>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
