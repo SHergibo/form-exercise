@@ -6,10 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import { InputTextField } from '@form-exercise/ui';
 import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
 import Box from '@mui/material/Box';
+import axios from 'axios';
 export interface FormValues {
   email: string;
   password: string;
@@ -37,8 +37,17 @@ export function Login() {
   } = useForm<FormValues>({ resolver: yupResolver(formValuesSchema) });
 
   const onSubmit: SubmitHandler<FormValues> = (data): void => {
-    console.log(data);
-    // navigate('/admin');
+    setError('');
+    axios
+      .post('/api/login', data)
+      .then((response) => {
+        if (response.status === 200) {
+          navigate('/admin');
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   const logout = (): void => {};
@@ -96,6 +105,7 @@ export function Login() {
               variant="body1"
               sx={{
                 color: '#d32f2f',
+                height: '1rem',
               }}
             >
               {error}
