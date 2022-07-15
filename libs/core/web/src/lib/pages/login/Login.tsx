@@ -7,9 +7,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { InputTextField } from '@form-exercise/ui';
+import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
 import Box from '@mui/material/Box';
-
-/* eslint-disable-next-line */
 export interface FormValues {
   email: string;
   password: string;
@@ -61,33 +61,25 @@ export function Login() {
             <Box component="form" onSubmit={handleSubmit(onSubmit)}>
               <Grid container direction="column" spacing={1}>
                 <Grid item>
-                  <TextField
-                    size="small"
-                    fullWidth
-                    error={errors.email?.message ? true : false}
+                  <InputTextField
+                    size={EnumSize.small}
+                    error={errors.email?.message}
                     id="email"
                     type="email"
                     label="Email *"
-                    variant="outlined"
-                    helperText={
-                      errors.email?.message ? errors.email?.message : ' '
-                    }
-                    {...register('email')}
+                    variant={EnumVariant.outlined}
+                    register={register}
                   />
                 </Grid>
                 <Grid item>
-                  <TextField
-                    size="small"
-                    fullWidth
-                    error={errors.password?.message ? true : false}
+                  <InputTextField
+                    size={EnumSize.small}
+                    error={errors.password?.message}
                     id="password"
                     type="password"
-                    label="password *"
-                    variant="outlined"
-                    helperText={
-                      errors.password?.message ? errors.password?.message : ' '
-                    }
-                    {...register('password')}
+                    label="Password *"
+                    variant={EnumVariant.outlined}
+                    register={register}
                   />
                 </Grid>
                 <Grid item>
