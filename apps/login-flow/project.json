@@ -17,7 +17,8 @@
         "tsConfig": "apps/login-flow/tsconfig.app.json",
         "assets": [
           "apps/login-flow/src/favicon.ico",
-          "apps/login-flow/src/assets"
+          "apps/login-flow/src/assets",
+          "apps/login-flow/src/mockServiceWorker.js"
         ],
         "styles": [],
         "scripts": [],
