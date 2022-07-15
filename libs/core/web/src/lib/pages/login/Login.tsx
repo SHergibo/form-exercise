@@ -11,6 +11,8 @@ import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
+import { useTranslation } from 'react-i18next';
+
 export interface FormValues {
   email: string;
   password: string;
@@ -27,6 +29,7 @@ const formValuesSchema = yup
   .required();
 
 export function Login() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -49,7 +52,7 @@ export function Login() {
       })
       .catch((error) => {
         if (error.response.status === 401) {
-          setError('Mauvais email ou mot de passe !');
+          setError(t('errorLogin'));
         }
       });
     setLoading(false);
@@ -66,10 +69,15 @@ export function Login() {
     >
       <Grid item xs={3}>
         <Typography variant="h2" component="div">
-          Connexion
+          {t('login')}
         </Typography>
 
-        <Box component="form">
+        <Box
+          component="form"
+          sx={{
+            minWidth: '20rem',
+          }}
+        >
           <Grid container direction="column" spacing={1}>
             <Grid item>
               <InputTextField
@@ -77,7 +85,7 @@ export function Login() {
                 error={errors.email?.message}
                 id="email"
                 type="email"
-                label="Email *"
+                label={`${t('email')} *`}
                 variant={EnumVariant.outlined}
                 register={register}
               />
@@ -88,7 +96,7 @@ export function Login() {
                 error={errors.password?.message}
                 id="password"
                 type="password"
-                label="Password *"
+                label={`${t('password')} *`}
                 variant={EnumVariant.outlined}
                 register={register}
               />
@@ -103,7 +111,7 @@ export function Login() {
                 endIcon={<LockOpenIcon />}
                 loadingPosition="end"
               >
-                Connexion
+                {t('login')}
               </LoadingButton>
             </Grid>
           </Grid>
