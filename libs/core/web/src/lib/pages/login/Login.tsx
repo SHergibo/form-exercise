@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
 /* eslint-disable-next-line */
@@ -7,6 +9,16 @@ export interface FormValues {
   email: string;
   password: string;
 }
+
+const formValuesSchema = yup
+  .object({
+    email: yup.string().email('Email non valide!').required('Email requis!'),
+    password: yup
+      .string()
+      .min(6, 'Mot de passe trop court!')
+      .required('Mot de passe requis!'),
+  })
+  .required();
 
 export function Login() {
   const navigate = useNavigate();
@@ -16,7 +28,7 @@ export function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({ resolver: yupResolver(formValuesSchema) });
 
   const onSubmit: SubmitHandler<FormValues> = (data): void => {
     console.log(data);
@@ -36,13 +48,9 @@ export function Login() {
               <div>
                 <div>
                   <label htmlFor="email">Email *</label>
-                  <input
-                    id="email"
-                    type="email"
-                    {...register('email', { required: 'Email requis' })}
-                  />
+                  <input id="email" type="email" {...register('email')} />
                 </div>
-                <p>{errors?.email?.message}</p>
+                <p>{errors.email?.message}</p>
               </div>
 
               <div>
@@ -51,12 +59,10 @@ export function Login() {
                   <input
                     id="password"
                     type="password"
-                    {...register('password', {
-                      required: 'Mot de passe requis',
-                    })}
+                    {...register('password')}
                   />
                 </div>
-                <p>{errors?.password?.message}</p>
+                <p>{errors.password?.message}</p>
               </div>
 
               <input type="submit" value={'Connexion'} />
