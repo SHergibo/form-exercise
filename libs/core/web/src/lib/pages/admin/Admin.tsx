@@ -1,9 +1,10 @@
 import { Box } from '@mui/material';
-import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import LockIcon from '@mui/icons-material/Lock';
 
 /* eslint-disable-next-line */
 export interface AdminProps {}
@@ -11,9 +12,11 @@ export interface AdminProps {}
 export function Admin(props: AdminProps) {
   const navigate = useNavigate();
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const logout = (): void => {
-    axios
+  const logout = async (): Promise<void> => {
+    setLoading(true);
+    await axios
       .post('/api/logout')
       .then((response) => {
         if (response.status === 200) {
@@ -23,6 +26,7 @@ export function Admin(props: AdminProps) {
       .catch((error) => {
         setError(error.message);
       });
+    setLoading(false);
   };
 
   return (
@@ -31,9 +35,17 @@ export function Admin(props: AdminProps) {
         Administration
       </Typography>
 
-      <Button variant="outlined" onClick={logout}>
-        {'Déconnexion'}
-      </Button>
+      <LoadingButton
+        variant="outlined"
+        type="submit"
+        onClick={logout}
+        loading={loading}
+        endIcon={<LockIcon />}
+        loadingPosition="end"
+      >
+        Déconnexion
+      </LoadingButton>
+
       <Typography
         gutterBottom
         variant="body1"
