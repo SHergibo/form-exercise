@@ -1,0 +1,13 @@
+{
+  "login": "Connexion",
+  "logout": "Déconnexion",
+  "email": "Email",
+  "password": "Mot de passe",
+  "administration": "Administration",
+  "invalidEmail": "Email non valide",
+  "requiredEmail": "Email requis !",
+  "invalidPassword": "Le mot de passe est trop court",
+  "requiredPassword": "Mot de passe requis !",
+  "errorLogin": "Mauvais email ou mot de passe !",
+  "errorLogout": "Une erreur est survenue !"
+}

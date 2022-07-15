@@ -1,0 +1,13 @@
+{
+  "login": "Log in",
+  "logout": "Log out",
+  "email": "Email",
+  "password": "Password",
+  "administration": "Administration",
+  "invalidEmail": "Invalid email",
+  "requiredEmail": "Email field is required !",
+  "invalidPassword": "Invalid password",
+  "requiredPassword": "Password field is required !",
+  "errorLogin": "Wrong email or password !",
+  "errorLogout": "An error as occured !"
+}
