@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@form-exercise/core/web": ["libs/core/web/src/index.ts"]
+      "@form-exercise/core/web": ["libs/core/web/src/index.ts"],
+      "@form-exercise/data/enum": ["libs/data/enum/src/index.ts"],
+      "@form-exercise/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
