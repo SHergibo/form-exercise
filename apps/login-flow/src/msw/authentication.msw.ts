@@ -1,11 +1,11 @@
 import { rest } from 'msw';
 
 const CORRECT_EMAIL = 'test@test.com';
-const CORRECT_PASSWORD = '123';
+const CORRECT_PASSWORD = '12345678';
 
 export const getAuthenticationMSW = () => [
   rest.post<{ email?: string; password?: string }>(
-    'http://localhost:3000/api/login',
+    'http://localhost:4200/api/login',
     (req, res, ctx) => {
       if (!req.body) {
         return res(ctx.status(401));
@@ -21,7 +21,7 @@ export const getAuthenticationMSW = () => [
       return res(ctx.delay(1000), ctx.status(200, 'Mocked status'));
     }
   ),
-  rest.post('http://localhost:3000/api/logout', (req, res, ctx) => {
+  rest.post('http://localhost:4200/api/logout', (req, res, ctx) => {
     return res(ctx.delay(1000), ctx.status(200, 'Mocked status'));
   }),
 ];
