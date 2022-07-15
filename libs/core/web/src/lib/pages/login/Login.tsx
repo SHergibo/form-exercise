@@ -5,11 +5,12 @@ import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { InputTextField } from '@form-exercise/ui';
 import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
 import Box from '@mui/material/Box';
 import axios from 'axios';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 export interface FormValues {
   email: string;
   password: string;
@@ -28,6 +29,7 @@ const formValuesSchema = yup
 export function Login() {
   const navigate = useNavigate();
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -35,9 +37,10 @@ export function Login() {
     formState: { errors },
   } = useForm<FormValues>({ resolver: yupResolver(formValuesSchema) });
 
-  const onSubmit: SubmitHandler<FormValues> = (data): void => {
+  const onSubmit: SubmitHandler<FormValues> = async (data): Promise<void> => {
     setError('');
-    axios
+    setLoading(true);
+    await axios
       .post('/api/login', data)
       .then((response) => {
         if (response.status === 200) {
@@ -45,8 +48,11 @@ export function Login() {
         }
       })
       .catch((error) => {
-        setError(error.message);
+        if (error.response.status === 401) {
+          setError('Mauvais email ou mot de passe !');
+        }
       });
+    setLoading(false);
   };
 
   return (
@@ -63,7 +69,7 @@ export function Login() {
           Connexion
         </Typography>
 
-        <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+        <Box component="form">
           <Grid container direction="column" spacing={1}>
             <Grid item>
               <InputTextField
@@ -88,9 +94,17 @@ export function Login() {
               />
             </Grid>
             <Grid item>
-              <Button variant="outlined" type="submit" fullWidth>
+              <LoadingButton
+                variant="outlined"
+                type="submit"
+                fullWidth
+                onClick={handleSubmit(onSubmit)}
+                loading={loading}
+                endIcon={<LockOpenIcon />}
+                loadingPosition="end"
+              >
                 Connexion
-              </Button>
+              </LoadingButton>
             </Grid>
           </Grid>
         </Box>
