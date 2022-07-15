@@ -3,6 +3,11 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
 
 /* eslint-disable-next-line */
 export interface FormValues {
@@ -38,43 +43,80 @@ export function Login() {
   const logout = (): void => {};
 
   return (
-    <div>
-      <h2>Connexion</h2>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '100vh' }}
+    >
+      <Grid item xs={3}>
+        <Typography variant="h2" component="div">
+          Connexion
+        </Typography>
 
-      {!isLoggedIn && (
-        <>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <div>
-                <div>
-                  <label htmlFor="email">Email *</label>
-                  <input id="email" type="email" {...register('email')} />
-                </div>
-                <p>{errors.email?.message}</p>
-              </div>
-
-              <div>
-                <div>
-                  <label htmlFor="password">Mot de passe *</label>
-                  <input
+        {!isLoggedIn && (
+          <>
+            <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+              <Grid container direction="column" spacing={1}>
+                <Grid item>
+                  <TextField
+                    size="small"
+                    fullWidth
+                    error={errors.email?.message ? true : false}
+                    id="email"
+                    type="email"
+                    label="Email *"
+                    variant="outlined"
+                    helperText={
+                      errors.email?.message ? errors.email?.message : ' '
+                    }
+                    {...register('email')}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    size="small"
+                    fullWidth
+                    error={errors.password?.message ? true : false}
                     id="password"
                     type="password"
+                    label="password *"
+                    variant="outlined"
+                    helperText={
+                      errors.password?.message ? errors.password?.message : ' '
+                    }
                     {...register('password')}
                   />
-                </div>
-                <p>{errors.password?.message}</p>
-              </div>
+                </Grid>
+                <Grid item>
+                  <Button variant="outlined" type="submit" fullWidth>
+                    Connexion
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
 
-              <input type="submit" value={'Connexion'} />
-            </div>
-          </form>
+            <Typography
+              gutterBottom
+              variant="body1"
+              sx={{
+                color: '#d32f2f',
+              }}
+            >
+              {''}
+            </Typography>
+          </>
+        )}
 
-          <p>{''}</p>
-        </>
-      )}
-
-      {isLoggedIn && <button onClick={logout}>{'Déconnexion'}</button>}
-    </div>
+        {isLoggedIn && (
+          <Button variant="outlined" onClick={logout}>
+            {'Déconnexion'}
+          </Button>
+        )}
+      </Grid>
+    </Grid>
   );
 }
 
