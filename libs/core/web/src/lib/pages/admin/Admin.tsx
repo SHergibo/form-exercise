@@ -5,11 +5,10 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LockIcon from '@mui/icons-material/Lock';
+import { useTranslation } from 'react-i18next';
 
-/* eslint-disable-next-line */
-export interface AdminProps {}
-
-export function Admin(props: AdminProps) {
+export function Admin() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -24,7 +23,7 @@ export function Admin(props: AdminProps) {
         }
       })
       .catch((error) => {
-        setError(error.message);
+        setError(t('errorLogout'));
       });
     setLoading(false);
   };
@@ -32,7 +31,7 @@ export function Admin(props: AdminProps) {
   return (
     <Box component="div">
       <Typography variant="h2" component="div">
-        Administration
+        {t('administration')}
       </Typography>
 
       <LoadingButton
@@ -43,7 +42,7 @@ export function Admin(props: AdminProps) {
         endIcon={<LockIcon />}
         loadingPosition="end"
       >
-        Déconnexion
+        {t('logout')}
       </LoadingButton>
 
       <Typography
