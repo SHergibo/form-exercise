@@ -27,7 +27,6 @@ const formValuesSchema = yup
 
 export function Login() {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState('');
 
   const {
@@ -50,8 +49,6 @@ export function Login() {
       });
   };
 
-  const logout = (): void => {};
-
   return (
     <Grid
       container
@@ -66,58 +63,48 @@ export function Login() {
           Connexion
         </Typography>
 
-        {!isLoggedIn && (
-          <>
-            <Box component="form" onSubmit={handleSubmit(onSubmit)}>
-              <Grid container direction="column" spacing={1}>
-                <Grid item>
-                  <InputTextField
-                    size={EnumSize.small}
-                    error={errors.email?.message}
-                    id="email"
-                    type="email"
-                    label="Email *"
-                    variant={EnumVariant.outlined}
-                    register={register}
-                  />
-                </Grid>
-                <Grid item>
-                  <InputTextField
-                    size={EnumSize.small}
-                    error={errors.password?.message}
-                    id="password"
-                    type="password"
-                    label="Password *"
-                    variant={EnumVariant.outlined}
-                    register={register}
-                  />
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" type="submit" fullWidth>
-                    Connexion
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+          <Grid container direction="column" spacing={1}>
+            <Grid item>
+              <InputTextField
+                size={EnumSize.small}
+                error={errors.email?.message}
+                id="email"
+                type="email"
+                label="Email *"
+                variant={EnumVariant.outlined}
+                register={register}
+              />
+            </Grid>
+            <Grid item>
+              <InputTextField
+                size={EnumSize.small}
+                error={errors.password?.message}
+                id="password"
+                type="password"
+                label="Password *"
+                variant={EnumVariant.outlined}
+                register={register}
+              />
+            </Grid>
+            <Grid item>
+              <Button variant="outlined" type="submit" fullWidth>
+                Connexion
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
 
-            <Typography
-              gutterBottom
-              variant="body1"
-              sx={{
-                color: '#d32f2f',
-                height: '1rem',
-              }}
-            >
-              {error}
-            </Typography>
-          </>
-        )}
-
-        {isLoggedIn && (
-          <Button variant="outlined" onClick={logout}>
-            {'Déconnexion'}
-          </Button>
-        )}
+        <Typography
+          gutterBottom
+          variant="body1"
+          sx={{
+            color: '#d32f2f',
+            height: '1rem',
+          }}
+        >
+          {error}
+        </Typography>
       </Grid>
     </Grid>
   );
