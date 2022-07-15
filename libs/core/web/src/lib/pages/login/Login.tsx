@@ -28,6 +28,7 @@ const formValuesSchema = yup
 export function Login() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [error, setError] = useState('');
 
   const {
     register,
@@ -97,7 +98,7 @@ export function Login() {
                 color: '#d32f2f',
               }}
             >
-              {''}
+              {error}
             </Typography>
           </>
         )}
