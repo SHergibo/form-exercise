@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Admin, Login } from '@form-exercise/core/web';
+import { Admin, Login, NotFound } from '@form-exercise/core/web';
 import i18n from 'i18next';
 import { I18nextProvider } from 'react-i18next';
 import { initI18Next } from './i18next/i18next.config';
@@ -23,6 +23,7 @@ export function App() {
                 </ErrorBoundary>
               }
             />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
