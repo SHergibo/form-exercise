@@ -20,12 +20,12 @@ export interface FormValues {
 
 yup.setLocale({
   mixed: {
-    default: i18next.t('validation.invalid'),
-    required: ({}) => i18next.t('validation.required'),
+    default: 'validation.invalid',
+    required: 'validation.required',
   },
   string: {
-    min: ({ min }) => i18next.t('validation.minLenght', { min }),
-    email: ({ regex }) => i18next.t('validation.invalidEmail', { regex }),
+    min: 'validation.invalid',
+    email: 'validation.invalidEmail',
   },
 });
 
@@ -39,7 +39,7 @@ const formValuesSchema = yup
 export function Login() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const {
@@ -49,7 +49,7 @@ export function Login() {
   } = useForm<FormValues>({ resolver: yupResolver(formValuesSchema) });
 
   const onSubmit: SubmitHandler<FormValues> = async (data): Promise<void> => {
-    setError('');
+    setError(false);
     setLoading(true);
     await axios
       .post('/api/login', data)
@@ -60,7 +60,7 @@ export function Login() {
       })
       .catch((error) => {
         if (error.response.status === 401) {
-          setError(t('errorLogin'));
+          setError(true);
         }
       });
     setLoading(false);
@@ -90,7 +90,9 @@ export function Login() {
             <Grid item>
               <InputTextField
                 size={EnumSize.small}
-                error={errors.email?.message}
+                error={
+                  errors?.email?.message ? t(`${errors?.email?.message}`) : ''
+                }
                 id="email"
                 type="email"
                 label={`${t('email')} *`}
@@ -101,7 +103,11 @@ export function Login() {
             <Grid item>
               <InputTextField
                 size={EnumSize.small}
-                error={errors.password?.message}
+                error={
+                  errors?.password?.message
+                    ? t(`${errors?.password?.message}`)
+                    : ''
+                }
                 id="password"
                 type="password"
                 label={`${t('password')} *`}
@@ -133,7 +139,7 @@ export function Login() {
             height: '1rem',
           }}
         >
-          {error}
+          {error ? t('errorLogin') : ''}
         </Typography>
       </Grid>
     </Grid>
