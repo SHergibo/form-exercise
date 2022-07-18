@@ -4,6 +4,7 @@ import i18n from 'i18next';
 import { I18nextProvider } from 'react-i18next';
 import { initI18Next } from './i18next/i18next.config';
 import { MenuApp } from '@form-exercise/core/web';
+import ErrorBoundary from 'libs/core/web/src/lib/error-handler/error-boundary/ErrorBoundary';
 
 initI18Next();
 
@@ -14,7 +15,14 @@ export function App() {
         <Routes>
           <Route element={<MenuApp />}>
             <Route path="/" element={<Login />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route
+              path="/admin"
+              element={
+                <ErrorBoundary>
+                  <Admin />
+                </ErrorBoundary>
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>
