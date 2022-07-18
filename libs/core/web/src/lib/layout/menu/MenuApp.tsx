@@ -35,7 +35,11 @@ export function MenuApp() {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {location.pathname === '/' ? t('login') : t('administration')}
+              {location.pathname === '/' && t('login')}
+              {location.pathname === '/admin' && t('administration')}
+              {location.pathname !== '/admin' &&
+                location.pathname !== '/' &&
+                t('404NotFound')}
             </Typography>
 
             <Button
