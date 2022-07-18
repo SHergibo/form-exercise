@@ -10,5 +10,13 @@
   "requiredPassword": "Mot de passe requis !",
   "errorLogin": "Mauvais email ou mot de passe !",
   "errorLogout": "Une erreur est survenue !",
-  "switchLang": "En"
+  "switchLang": "Changer de langage",
+  "french": "Français",
+  "english": "Anglais",
+  "validation": {
+    "required": "Ce champ est requis",
+    "invalid": "Ce champ est invalide",
+    "minLenght": "Ce champ doit avoir au minimum {{min}} caractères",
+    "invalidEmail": "Email non valide"
+  }
 }

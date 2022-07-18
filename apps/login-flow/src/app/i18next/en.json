@@ -10,5 +10,13 @@
   "requiredPassword": "Password field is required !",
   "errorLogin": "Wrong email or password !",
   "errorLogout": "An error as occured !",
-  "switchLang": "Fr"
+  "switchLang": "Switch language",
+  "french": "French",
+  "english": "English",
+  "validation": {
+    "required": "This field is required",
+    "invalid": "This field is invalid",
+    "minLenght": "This field must be at least {{min}} characters",
+    "invalidEmail": "Invalid email"
+  }
 }
