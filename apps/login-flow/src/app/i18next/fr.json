@@ -22,5 +22,6 @@
   "generateAnError": "Générer une erreur",
   "boundaryError": "Oops une erreur est survenue!",
   "returnLogin": "Retour à la page de connexion",
-  "returnLastPage": "Retourner à la page précédente."
+  "returnLastPage": "Retourner à la page précédente.",
+  "404NotFound": "404 page non trouvée!"
 }

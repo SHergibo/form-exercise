@@ -22,5 +22,6 @@
   "generateAnError": "Throw an error",
   "boundaryError": "Oops something went wrong!",
   "returnLogin": "Return to login page",
-  "returnLastPage": "Return to last page"
+  "returnLastPage": "Return to last page",
+  "404NotFound": "404 page not found!"
 }
