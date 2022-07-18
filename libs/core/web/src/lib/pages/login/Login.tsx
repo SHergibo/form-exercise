@@ -12,18 +12,27 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 export interface FormValues {
   email: string;
   password: string;
 }
 
+yup.setLocale({
+  mixed: {
+    default: i18next.t('validation.invalid'),
+    required: ({}) => i18next.t('validation.required'),
+  },
+  string: {
+    min: ({ min }) => i18next.t('validation.minLenght', { min }),
+    email: ({ regex }) => i18next.t('validation.invalidEmail', { regex }),
+  },
+});
+
 const formValuesSchema = yup
   .object({
-    email: yup.string().email('Email non valide!').required('Email requis!'),
-    password: yup
-      .string()
-      .min(6, 'Mot de passe trop court!')
-      .required('Mot de passe requis!'),
+    email: yup.string().email().required(),
+    password: yup.string().min(6).required(),
   })
   .required();
 
