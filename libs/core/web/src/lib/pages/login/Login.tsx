@@ -12,7 +12,6 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 export interface FormValues {
   email: string;
   password: string;
