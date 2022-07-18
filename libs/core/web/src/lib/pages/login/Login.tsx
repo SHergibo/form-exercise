@@ -12,12 +12,6 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
-import Button from '@mui/material/Button';
-import i18next from 'i18next';
-
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-
 export interface FormValues {
   email: string;
   password: string;
@@ -63,103 +57,77 @@ export function Login() {
     setLoading(false);
   };
 
-  const languageSwitcher = (): void => {
-    let lang = '';
-    if (i18next.language === 'fr') {
-      lang = 'en';
-    } else {
-      lang = 'fr';
-    }
-    i18next.changeLanguage(lang, (err, t) => {
-      t('key');
-    });
-  };
-
   return (
-    <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {t('login')}
-            </Typography>
-            <Button color="inherit" onClick={languageSwitcher}>
-              {t('switchLang')}
-            </Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        sx={{ minHeight: '100vh' }}
-      >
-        <Grid item xs={3}>
-          <Typography variant="h2" component="div">
-            {t('login')}
-          </Typography>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ minHeight: '100vh' }}
+    >
+      <Grid item xs={3}>
+        <Typography variant="h2" component="div">
+          {t('login')}
+        </Typography>
 
-          <Box
-            component="form"
-            sx={{
-              minWidth: '20rem',
-            }}
-          >
-            <Grid container direction="column" spacing={1}>
-              <Grid item>
-                <InputTextField
-                  size={EnumSize.small}
-                  error={errors.email?.message}
-                  id="email"
-                  type="email"
-                  label={`${t('email')} *`}
-                  variant={EnumVariant.outlined}
-                  register={register}
-                />
-              </Grid>
-              <Grid item>
-                <InputTextField
-                  size={EnumSize.small}
-                  error={errors.password?.message}
-                  id="password"
-                  type="password"
-                  label={`${t('password')} *`}
-                  variant={EnumVariant.outlined}
-                  register={register}
-                />
-              </Grid>
-              <Grid item>
-                <LoadingButton
-                  variant="outlined"
-                  type="submit"
-                  fullWidth
-                  onClick={handleSubmit(onSubmit)}
-                  loading={loading}
-                  endIcon={<LockOpenIcon />}
-                  loadingPosition="end"
-                >
-                  {t('login')}
-                </LoadingButton>
-              </Grid>
+        <Box
+          component="form"
+          sx={{
+            minWidth: '20rem',
+          }}
+        >
+          <Grid container direction="column" spacing={1}>
+            <Grid item>
+              <InputTextField
+                size={EnumSize.small}
+                error={errors.email?.message}
+                id="email"
+                type="email"
+                label={`${t('email')} *`}
+                variant={EnumVariant.outlined}
+                register={register}
+              />
             </Grid>
-          </Box>
+            <Grid item>
+              <InputTextField
+                size={EnumSize.small}
+                error={errors.password?.message}
+                id="password"
+                type="password"
+                label={`${t('password')} *`}
+                variant={EnumVariant.outlined}
+                register={register}
+              />
+            </Grid>
+            <Grid item>
+              <LoadingButton
+                variant="outlined"
+                type="submit"
+                fullWidth
+                onClick={handleSubmit(onSubmit)}
+                loading={loading}
+                endIcon={<LockOpenIcon />}
+                loadingPosition="end"
+              >
+                {t('login')}
+              </LoadingButton>
+            </Grid>
+          </Grid>
+        </Box>
 
-          <Typography
-            gutterBottom
-            variant="body1"
-            sx={{
-              color: '#d32f2f',
-              height: '1rem',
-            }}
-          >
-            {error}
-          </Typography>
-        </Grid>
+        <Typography
+          gutterBottom
+          variant="body1"
+          sx={{
+            color: '#d32f2f',
+            height: '1rem',
+          }}
+        >
+          {error}
+        </Typography>
       </Grid>
-    </>
+    </Grid>
   );
 }
 
