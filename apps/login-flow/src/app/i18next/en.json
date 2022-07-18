@@ -9,5 +9,6 @@
   "invalidPassword": "Invalid password",
   "requiredPassword": "Password field is required !",
   "errorLogin": "Wrong email or password !",
-  "errorLogout": "An error as occured !"
+  "errorLogout": "An error as occured !",
+  "switchLang": "Fr"
 }

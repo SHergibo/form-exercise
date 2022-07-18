@@ -9,5 +9,6 @@
   "invalidPassword": "Le mot de passe est trop court",
   "requiredPassword": "Mot de passe requis !",
   "errorLogin": "Mauvais email ou mot de passe !",
-  "errorLogout": "Une erreur est survenue !"
+  "errorLogout": "Une erreur est survenue !",
+  "switchLang": "En"
 }
