@@ -18,5 +18,9 @@
     "invalid": "Ce champ est invalide",
     "minLenght": "Ce champ doit avoir au minimum {{min}} caractères",
     "invalidEmail": "Email non valide"
-  }
+  },
+  "generateAnError": "Générer une erreur",
+  "boundaryError": "Oops une erreur est survenue!",
+  "returnLogin": "Retour à la page de connexion",
+  "returnLastPage": "Retourner à la page précédente."
 }

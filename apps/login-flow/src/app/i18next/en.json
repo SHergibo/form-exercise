@@ -18,5 +18,9 @@
     "invalid": "This field is invalid",
     "minLenght": "This field must be at least {{min}} characters",
     "invalidEmail": "Invalid email"
-  }
+  },
+  "generateAnError": "Throw an error",
+  "boundaryError": "Oops something went wrong!",
+  "returnLogin": "Return to login page",
+  "returnLastPage": "Return to last page"
 }
