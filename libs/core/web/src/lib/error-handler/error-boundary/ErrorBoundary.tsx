@@ -29,10 +29,6 @@ class ErrorBoundaryClass extends Component<Props, State> {
   static getDerivedStateFromError(): State {
     return { hasError: true };
   }
-  override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log('error', error);
-    console.log('errorInfo', errorInfo);
-  }
 
   override render() {
     const { t } = this.props;
