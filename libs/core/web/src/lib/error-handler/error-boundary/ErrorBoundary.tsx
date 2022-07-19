@@ -9,6 +9,7 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import { i18nKeys } from '@form-exercise/i18n';
 
 interface Props {
   children?: ReactNode;
@@ -37,7 +38,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
       return (
         <>
           <Typography variant="h2" component="div">
-            {t('boundaryError')}
+            {t(i18nKeys.title.boundaryError)}
           </Typography>
 
           <Grid
@@ -54,7 +55,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
                   location.reload();
                 }}
               >
-                {t('returnLastPage')}
+                {t(i18nKeys.button.returnLastPage)}
               </Button>
             </Grid>
             <Grid item>
@@ -64,7 +65,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
                   navigate('/');
                 }}
               >
-                {t('returnLogin')}
+                {t(i18nKeys.button.returnLogin)}
               </Button>
             </Grid>
           </Grid>
