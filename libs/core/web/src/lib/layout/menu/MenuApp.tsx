@@ -44,11 +44,12 @@ export function MenuApp() {
 
             <Button
               id="basic-button"
+              variant="contained"
+              disableElevation
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}
-              sx={{ color: 'white' }}
             >
               {t(i18nKeys.button.switchLang)}
             </Button>
