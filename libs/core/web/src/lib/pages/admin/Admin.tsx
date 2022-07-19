@@ -8,6 +8,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import { useTranslation } from 'react-i18next';
 import Button from '@mui/material/Button';
 import { i18nKeys } from '@form-exercise/i18n';
+import { ErrorMessage } from '@form-exercise/ui';
 
 export function Admin() {
   const { t } = useTranslation();
@@ -54,16 +55,7 @@ export function Admin() {
         {t(i18nKeys.button.logout)}
       </LoadingButton>
 
-      <Typography
-        gutterBottom
-        variant="body1"
-        sx={{
-          color: '#d32f2f',
-          height: '1rem',
-        }}
-      >
-        {error}
-      </Typography>
+      <ErrorMessage errorMessage={error} />
 
       <Button
         variant="contained"
