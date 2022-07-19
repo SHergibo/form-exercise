@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -13,28 +12,11 @@ import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
 import { i18nKeys } from '@form-exercise/i18n';
+import { loginValidations } from '@form-exercise/yup';
 export interface FormValues {
   email: string;
   password: string;
 }
-
-yup.setLocale({
-  mixed: {
-    default: i18nKeys.validation.invalid,
-    required: i18nKeys.validation.required,
-  },
-  string: {
-    min: i18nKeys.validation.invalid,
-    email: i18nKeys.validation.invalidEmail,
-  },
-});
-
-const formValuesSchema = yup
-  .object({
-    email: yup.string().email().required(),
-    password: yup.string().min(6).required(),
-  })
-  .required();
 
 export function Login() {
   const { t } = useTranslation();
@@ -46,7 +28,7 @@ export function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({ resolver: yupResolver(formValuesSchema) });
+  } = useForm<FormValues>({ resolver: yupResolver(loginValidations) });
 
   const onSubmit: SubmitHandler<FormValues> = async (data): Promise<void> => {
     setError(false);
