@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { InputTextField } from '@form-exercise/ui';
+import { ErrorMessage, InputTextField } from '@form-exercise/ui';
 import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
 import Box from '@mui/material/Box';
 import axios from 'axios';
@@ -115,16 +115,7 @@ export function Login() {
           </Grid>
         </Box>
 
-        <Typography
-          gutterBottom
-          variant="body1"
-          sx={{
-            color: '#d32f2f',
-            height: '1rem',
-          }}
-        >
-          {isError ? t(i18nKeys.error.login) : ''}
-        </Typography>
+        <ErrorMessage errorMessage={isError ? t(i18nKeys.error.login) : ''} />
       </Grid>
     </Grid>
   );
