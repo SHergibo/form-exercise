@@ -10,6 +10,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { i18nKeys } from '@form-exercise/i18n';
 
 export function MenuApp() {
   const { t } = useTranslation();
@@ -35,11 +36,11 @@ export function MenuApp() {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {location.pathname === '/' && t('login')}
-              {location.pathname === '/admin' && t('administration')}
+              {location.pathname === '/' && t(i18nKeys.menu.title.login)}
+              {location.pathname === '/admin' && t(i18nKeys.menu.title.admin)}
               {location.pathname !== '/admin' &&
                 location.pathname !== '/' &&
-                t('404NotFound')}
+                t(i18nKeys.menu.title.notFound)}
             </Typography>
 
             <Button
@@ -50,7 +51,7 @@ export function MenuApp() {
               onClick={handleClick}
               sx={{ color: 'white' }}
             >
-              {t('switchLang')}
+              {t(i18nKeys.button.switchLang)}
             </Button>
             <Menu
               id="basic-menu"
@@ -67,7 +68,7 @@ export function MenuApp() {
                   languageSwitcher('fr');
                 }}
               >
-                {t('french')}
+                {t(i18nKeys.lang.french)}
               </MenuItem>
               <MenuItem
                 onClick={() => {
@@ -75,7 +76,7 @@ export function MenuApp() {
                   languageSwitcher('en');
                 }}
               >
-                {t('english')}
+                {t(i18nKeys.lang.english)}
               </MenuItem>
             </Menu>
           </Toolbar>
