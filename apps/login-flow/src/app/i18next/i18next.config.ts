@@ -1,3 +1,4 @@
+import { Languages } from '@form-exercise/utils';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import en from './en.json';
@@ -13,8 +14,8 @@ export const initI18Next = () => {
         translation: fr,
       },
     },
-    lng: 'fr',
-    fallbackLng: 'fr',
+    lng: Languages.FR,
+    fallbackLng: Languages.EN,
 
     interpolation: {
       escapeValue: false,
