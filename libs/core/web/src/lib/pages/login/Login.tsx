@@ -21,7 +21,7 @@ export interface FormValues {
 export function Login() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [error, setError] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const {
@@ -31,7 +31,7 @@ export function Login() {
   } = useForm<FormValues>({ resolver: yupResolver(loginValidations) });
 
   const onSubmit: SubmitHandler<FormValues> = async (data): Promise<void> => {
-    setError(false);
+    setIsError(false);
     setLoading(true);
     await axios
       .post('/api/login', data)
@@ -42,7 +42,7 @@ export function Login() {
       })
       .catch((error) => {
         if (error.response.status === 401) {
-          setError(true);
+          setIsError(true);
         }
       });
     setLoading(false);
@@ -121,7 +121,7 @@ export function Login() {
             height: '1rem',
           }}
         >
-          {error ? t(i18nKeys.error.login) : ''}
+          {isError ? t(i18nKeys.error.login) : ''}
         </Typography>
       </Grid>
     </Grid>
