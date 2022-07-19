@@ -4,6 +4,7 @@
   "projects": {
     "core-web": "libs/core/web",
     "data-enum": "libs/data/enum",
+    "i18n": "libs/i18n",
     "login-flow": "apps/login-flow",
     "login-flow-e2e": "apps/login-flow-e2e",
     "ui": "libs/ui",
