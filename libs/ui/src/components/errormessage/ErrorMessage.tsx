@@ -6,14 +6,7 @@ export interface ErrormessageProps {
 
 export function ErrorMessage({ errorMessage }: ErrormessageProps) {
   return (
-    <Typography
-      gutterBottom
-      variant="body1"
-      sx={{
-        color: '#d32f2f',
-        height: '1rem',
-      }}
-    >
+    <Typography gutterBottom component="p" variant="error">
       {errorMessage}
     </Typography>
   );
