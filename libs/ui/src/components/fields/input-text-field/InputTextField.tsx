@@ -9,6 +9,7 @@ export interface InputTextFieldProps {
   type: string;
   label: string;
   variant?: EnumVariant | undefined;
+  required?: boolean;
   register: UseFormRegister<any>;
 }
 
@@ -19,6 +20,7 @@ export function InputTextField({
   type,
   label,
   variant,
+  required = false,
   register,
 }: InputTextFieldProps) {
   return (
@@ -31,6 +33,7 @@ export function InputTextField({
       label={label}
       variant={variant}
       helperText={error ? error : ' '}
+      required={required}
       {...register(id)}
     />
   );
