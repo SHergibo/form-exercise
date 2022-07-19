@@ -1,18 +1,17 @@
+import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
-
-import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { i18nKeys } from '@form-exercise/i18n';
+import { i18nKeys, languageSwitcher } from '@form-exercise/i18n';
 import { MenuTitle } from '@form-exercise/core/web';
 
 export function MenuApp() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -20,12 +19,6 @@ export function MenuApp() {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const languageSwitcher = (lang: string): void => {
-    i18n.changeLanguage(lang, (err, t) => {
-      t('key');
-    });
   };
 
   return (
