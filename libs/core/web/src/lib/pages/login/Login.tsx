@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
+import { IsLoggedContext } from '../../context/AuthContext';
 export interface FormValues {
   email: string;
   password: string;
@@ -36,6 +37,7 @@ const formValuesSchema = yup
   .required();
 
 export function Login() {
+  const { setIsLogged } = useContext(IsLoggedContext);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [error, setError] = useState(false);
@@ -54,6 +56,7 @@ export function Login() {
       .post('/api/login', data)
       .then((response) => {
         if (response.status === 200) {
+          setIsLogged(true);
           navigate('/admin');
         }
       })
