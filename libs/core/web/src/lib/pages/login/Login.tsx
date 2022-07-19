@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
+import { i18nKeys } from '@form-exercise/i18n';
 export interface FormValues {
   email: string;
   password: string;
@@ -19,12 +20,12 @@ export interface FormValues {
 
 yup.setLocale({
   mixed: {
-    default: 'validation.invalid',
-    required: 'validation.required',
+    default: i18nKeys.validation.invalid,
+    required: i18nKeys.validation.required,
   },
   string: {
-    min: 'validation.invalid',
-    email: 'validation.invalidEmail',
+    min: i18nKeys.validation.invalid,
+    email: i18nKeys.validation.invalidEmail,
   },
 });
 
@@ -76,7 +77,7 @@ export function Login() {
     >
       <Grid item xs={3}>
         <Typography variant="h2" component="div">
-          {t('login')}
+          {t(i18nKeys.title.login)}
         </Typography>
 
         <Box
@@ -94,7 +95,7 @@ export function Login() {
                 }
                 id="email"
                 type="email"
-                label={`${t('email')} *`}
+                label={`${t(i18nKeys.input.label.email)} *`}
                 variant={EnumVariant.outlined}
                 register={register}
               />
@@ -109,7 +110,7 @@ export function Login() {
                 }
                 id="password"
                 type="password"
-                label={`${t('password')} *`}
+                label={`${t(i18nKeys.input.label.password)} *`}
                 variant={EnumVariant.outlined}
                 register={register}
               />
@@ -124,7 +125,7 @@ export function Login() {
                 endIcon={<LockOpenIcon />}
                 loadingPosition="end"
               >
-                {t('login')}
+                {t(i18nKeys.button.login)}
               </LoadingButton>
             </Grid>
           </Grid>
@@ -138,7 +139,7 @@ export function Login() {
             height: '1rem',
           }}
         >
-          {error ? t('errorLogin') : ''}
+          {error ? t(i18nKeys.error.login) : ''}
         </Typography>
       </Grid>
     </Grid>
