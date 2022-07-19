@@ -10,6 +10,7 @@ import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys } from '@form-exercise/i18n';
+import { Menutitle } from '@form-exercise/core/web';
 
 export function MenuApp() {
   const { t, i18n } = useTranslation();
@@ -34,13 +35,7 @@ export function MenuApp() {
       <Box flexGrow={1}>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>
-              {location.pathname === '/' && t(i18nKeys.menu.title.login)}
-              {location.pathname === '/admin' && t(i18nKeys.menu.title.admin)}
-              {location.pathname !== '/admin' &&
-                location.pathname !== '/' &&
-                t(i18nKeys.menu.title.notFound)}
-            </Typography>
+            <Menutitle />
 
             <Button
               id="basic-button"
