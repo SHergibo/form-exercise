@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { getRouteTitle } from '@form-exercise/utils';
 
-export function Menutitle() {
+export function MenuTitle() {
   const { t } = useTranslation();
   const location = useLocation();
 
@@ -14,4 +14,4 @@ export function Menutitle() {
   );
 }
 
-export default Menutitle;
+export default MenuTitle;

@@ -9,7 +9,7 @@ import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys } from '@form-exercise/i18n';
-import { Menutitle } from '@form-exercise/core/web';
+import { MenuTitle } from '@form-exercise/core/web';
 
 export function MenuApp() {
   const { t, i18n } = useTranslation();
@@ -33,7 +33,7 @@ export function MenuApp() {
       <Box flexGrow={1}>
         <AppBar position="static">
           <Toolbar>
-            <Menutitle />
+            <MenuTitle />
 
             <Button
               id="basic-button"
