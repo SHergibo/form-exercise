@@ -77,8 +77,9 @@ export function Login() {
                 }
                 id="email"
                 type="email"
-                label={`${t(i18nKeys.input.label.email)} *`}
+                label={`${t(i18nKeys.input.label.email)}`}
                 variant={EnumVariant.outlined}
+                required={true}
                 register={register}
               />
             </Grid>
@@ -92,8 +93,9 @@ export function Login() {
                 }
                 id="password"
                 type="password"
-                label={`${t(i18nKeys.input.label.password)} *`}
+                label={`${t(i18nKeys.input.label.password)}`}
                 variant={EnumVariant.outlined}
+                required={true}
                 register={register}
               />
             </Grid>
