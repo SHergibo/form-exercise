@@ -1,7 +1,7 @@
-import { Component, ReactNode, ErrorInfo } from 'react';
+import { Component, ReactNode } from 'react';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import {
   NavigateFunction,
   Location,
@@ -13,7 +13,7 @@ import { i18nKeys } from '@form-exercise/i18n';
 
 interface Props {
   children?: ReactNode;
-  t: any;
+  t: TFunction<'translation', undefined>;
   navigate: NavigateFunction;
   location: Location;
 }
@@ -78,7 +78,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
 
 interface IErrorBoundary {
   children?: ReactNode;
-  t: any;
+  t: TFunction<'translation', undefined>;
 }
 
 const ErrorBoundary = (props: IErrorBoundary) => {
