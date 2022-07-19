@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import LockIcon from '@mui/icons-material/Lock';
 import { useTranslation } from 'react-i18next';
 import Button from '@mui/material/Button';
+import { i18nKeys } from '@form-exercise/i18n';
 
 export function Admin() {
   const { t } = useTranslation();
@@ -25,7 +26,7 @@ export function Admin() {
         }
       })
       .catch((error) => {
-        setError(t('errorLogout'));
+        setError(t(i18nKeys.error.logout));
       });
     setLoading(false);
   };
@@ -39,7 +40,7 @@ export function Admin() {
   return (
     <Box component="div">
       <Typography variant="h2" component="div">
-        {t('administration')}
+        {t(i18nKeys.menu.title.admin)}
       </Typography>
 
       <LoadingButton
@@ -50,7 +51,7 @@ export function Admin() {
         endIcon={<LockIcon />}
         loadingPosition="end"
       >
-        {t('logout')}
+        {t(i18nKeys.button.logout)}
       </LoadingButton>
 
       <Typography
@@ -70,7 +71,7 @@ export function Admin() {
           setFakeError(true);
         }}
       >
-        {t('generateAnError')}
+        {t(i18nKeys.button.generateAnError)}
       </Button>
     </Box>
   );
