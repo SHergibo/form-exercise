@@ -2,6 +2,7 @@ import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useNavigationType } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import { i18nKeys } from '@form-exercise/i18n';
 
 export function NotFound() {
   const { t } = useTranslation();
@@ -9,7 +10,7 @@ export function NotFound() {
   return (
     <>
       <Typography variant="h2" component="div">
-        {t('404NotFound')}
+        {t(i18nKeys.title.notFound)}
       </Typography>
       <Button
         variant="contained"
@@ -17,7 +18,7 @@ export function NotFound() {
           navigate(-1);
         }}
       >
-        {t('returnLastPage')}
+        {t(i18nKeys.button.returnLastPage)}
       </Button>
     </>
   );
