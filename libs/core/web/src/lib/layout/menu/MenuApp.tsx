@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import * as React from 'react';
@@ -13,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys } from '@form-exercise/i18n';
 
 export function MenuApp() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -25,7 +24,7 @@ export function MenuApp() {
   };
 
   const languageSwitcher = (lang: string): void => {
-    i18next.changeLanguage(lang, (err, t) => {
+    i18n.changeLanguage(lang, (err, t) => {
       t('key');
     });
   };
