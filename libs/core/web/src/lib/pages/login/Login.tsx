@@ -26,6 +26,7 @@ export function Login() {
 
   const methods = useForm<FormValues>({
     defaultValues: { email: '', password: '' },
+    mode: 'all',
     resolver: yupResolver(loginValidations),
   });
 
