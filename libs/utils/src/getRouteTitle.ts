@@ -1,11 +1,11 @@
 import { i18nKeys } from '@form-exercise/i18n';
 import { routesArray, RoutesArray } from '@form-exercise/utils';
 
-interface IGetRouteTitle {
+interface GetRouteTitle {
   pathname: string;
 }
 
-export const getRouteTitle = ({ pathname }: IGetRouteTitle): string => {
+export const getRouteTitle = ({ pathname }: GetRouteTitle): string => {
   const routes: RoutesArray[] = routesArray;
   const routeIndex = routes.findIndex((route) => route.path === pathname);
 
