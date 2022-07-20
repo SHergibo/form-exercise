@@ -1,13 +1,13 @@
 import Typography from '@mui/material/Typography';
 
 export interface ErrormessageProps {
-  errorMessage: string;
+  message: string;
 }
 
-export function ErrorMessage({ errorMessage }: ErrormessageProps) {
+export function ErrorMessage({ message }: ErrormessageProps) {
   return (
     <Typography gutterBottom component="p" variant="error">
-      {errorMessage}
+      {message}
     </Typography>
   );
 }
