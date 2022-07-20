@@ -6,6 +6,7 @@ import { MenuApp } from '@form-exercise/core/web';
 import ErrorBoundary from 'libs/core/web/src/lib/error-handler/error-boundary/ErrorBoundary';
 import { initI18Next } from '@form-exercise/i18n';
 import { ThemeContext } from '@form-exercise/ui';
+import { routePath } from '@form-exercise/utils';
 
 initI18Next();
 
@@ -16,9 +17,9 @@ export function App() {
         <ThemeContext>
           <Routes>
             <Route element={<MenuApp />}>
-              <Route path="/" element={<Login />} />
+              <Route path={routePath.login} element={<Login />} />
               <Route
-                path="/admin"
+                path={routePath.admin}
                 element={
                   <ErrorBoundary>
                     <Admin />
