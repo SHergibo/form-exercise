@@ -13,6 +13,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
 import { i18nKeys } from '@form-exercise/i18n';
 import { loginValidations } from '@form-exercise/validations';
+import { AppRoute, getRoutePath } from '../../routes';
 export interface FormValues {
   email: string;
   password: string;
@@ -42,7 +43,7 @@ export function Login() {
       .post('/api/login', data)
       .then((response) => {
         if (response.status === 200) {
-          navigate('/admin');
+          navigate(getRoutePath(AppRoute.ADMIN));
         }
       })
       .catch((error) => {
