@@ -12,7 +12,7 @@ import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
 import { i18nKeys } from '@form-exercise/i18n';
-import { loginValidations } from '@form-exercise/yup';
+import { loginValidations } from '@form-exercise/validations';
 export interface FormValues {
   email: string;
   password: string;

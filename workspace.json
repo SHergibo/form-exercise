@@ -9,6 +9,6 @@
     "login-flow-e2e": "apps/login-flow-e2e",
     "ui": "libs/ui",
     "utils": "libs/utils",
-    "yup": "libs/yup"
+    "validations": "libs/validations"
   }
 }
