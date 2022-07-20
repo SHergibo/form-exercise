@@ -115,7 +115,7 @@ export function Login() {
           </Grid>
         </Box>
 
-        <ErrorMessage errorMessage={isError ? t(i18nKeys.error.login) : ''} />
+        <ErrorMessage message={isError ? t(i18nKeys.error.login) : ''} />
       </Grid>
     </Grid>
   );
