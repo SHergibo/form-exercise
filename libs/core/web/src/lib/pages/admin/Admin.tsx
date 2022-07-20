@@ -9,8 +9,10 @@ import { useTranslation } from 'react-i18next';
 import Button from '@mui/material/Button';
 import { i18nKeys } from '@form-exercise/i18n';
 import { ErrorMessage } from '@form-exercise/ui';
+import useAuthContext from 'libs/utils/src/hooks/useAuthContext';
 
 export function Admin() {
+  const { isLogged, setIsLogged } = useAuthContext();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [error, setError] = useState('');
@@ -23,6 +25,7 @@ export function Admin() {
       .post('/api/logout')
       .then((response) => {
         if (response.status === 200) {
+          setIsLogged(false);
           navigate('/');
         }
       })
