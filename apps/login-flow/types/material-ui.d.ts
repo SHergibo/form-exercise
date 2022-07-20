@@ -1,4 +1,5 @@
-import {} from '@mui/material/styles';
+import '@mui/material/styles';
+import '@mui/material/Typography';
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
