@@ -72,6 +72,7 @@ export function Login() {
             sx={{
               minWidth: '20rem',
             }}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <Grid container direction="column" spacing={1}>
               <Grid item>
@@ -107,7 +108,6 @@ export function Login() {
                   variant="outlined"
                   type="submit"
                   fullWidth
-                  onClick={handleSubmit(onSubmit)}
                   loading={loading}
                   endIcon={<LockOpenIcon />}
                   loadingPosition="end"
