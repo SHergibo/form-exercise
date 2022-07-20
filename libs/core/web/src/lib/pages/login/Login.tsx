@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
@@ -11,16 +11,16 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
-import { IsLoggedContext } from '../../context/AuthContext';
 import { i18nKeys } from '@form-exercise/i18n';
 import { loginValidations } from '@form-exercise/validations';
+import useAuthContext from 'libs/utils/src/hooks/useAuthContext';
 export interface FormValues {
   email: string;
   password: string;
 }
 
 export function Login() {
-  const { setIsLogged } = useContext(IsLoggedContext);
+  const { setIsLogged } = useAuthContext();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
