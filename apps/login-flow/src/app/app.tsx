@@ -1,12 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Admin, Login, NotFound } from '@form-exercise/core/web';
+import {
+  Admin,
+  AppRoute,
+  getRoutePath,
+  Login,
+  NotFound,
+} from '@form-exercise/core/web';
 import i18n from 'i18next';
 import { I18nextProvider } from 'react-i18next';
 import { MenuApp } from '@form-exercise/core/web';
 import ErrorBoundary from 'libs/core/web/src/lib/error-handler/error-boundary/ErrorBoundary';
 import { initI18Next } from '@form-exercise/i18n';
 import { ThemeContext } from '@form-exercise/ui';
-import { routePath } from '@form-exercise/utils';
 
 initI18Next();
 
@@ -17,9 +22,9 @@ export function App() {
         <ThemeContext>
           <Routes>
             <Route element={<MenuApp />}>
-              <Route path={routePath.login} element={<Login />} />
+              <Route path={getRoutePath(AppRoute.LOGIN)} element={<Login />} />
               <Route
-                path={routePath.admin}
+                path={getRoutePath(AppRoute.ADMIN)}
                 element={
                   <ErrorBoundary>
                     <Admin />
