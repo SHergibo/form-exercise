@@ -1,16 +1,15 @@
 import { i18nKeys } from '@form-exercise/i18n';
-import { routesArray, RoutesArray } from '@form-exercise/utils';
+import { getRoute } from '@form-exercise/utils';
 
 interface GetRouteTitle {
   pathname: string;
 }
 
 export const getRouteTitle = ({ pathname }: GetRouteTitle): string => {
-  const routes: RoutesArray[] = routesArray;
-  const routeIndex = routes.findIndex((route) => route.path === pathname);
+  const route = getRoute(pathname);
 
-  if (routeIndex !== -1) {
-    return routes[routeIndex].routeName;
+  if (route) {
+    return route.routeName;
   } else {
     return i18nKeys.menu.title.notFound;
   }
