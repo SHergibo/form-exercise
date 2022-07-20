@@ -32,7 +32,6 @@ export function Login() {
   const {
     handleSubmit,
     formState: { errors },
-    control,
   } = methods;
 
   const onSubmit: SubmitHandler<FormValues> = async (data): Promise<void> => {
@@ -84,7 +83,6 @@ export function Login() {
                   label={`${t(i18nKeys.input.label.email)}`}
                   variant={EnumVariant.outlined}
                   required={true}
-                  control={control}
                 />
               </Grid>
               <Grid item>
@@ -100,7 +98,6 @@ export function Login() {
                   label={`${t(i18nKeys.input.label.password)}`}
                   variant={EnumVariant.outlined}
                   required={true}
-                  control={control}
                 />
               </Grid>
               <Grid item>
