@@ -76,12 +76,12 @@ class ErrorBoundaryClass extends Component<Props, State> {
   }
 }
 
-interface IErrorBoundary {
+interface ErrorBoundary {
   children?: ReactNode;
   t: TFunction<'translation', undefined>;
 }
 
-const ErrorBoundary = (props: IErrorBoundary) => {
+const ErrorBoundary = (props: ErrorBoundary) => {
   const navigate = useNavigate();
   const location = useLocation();
 
