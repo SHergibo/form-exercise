@@ -1,56 +1,39 @@
 import { useState, useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { InputTextField } from '@form-exercise/ui';
+import { ErrorMessage, InputTextField } from '@form-exercise/ui';
 import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
 import { IsLoggedContext } from '../../context/AuthContext';
+import { i18nKeys } from '@form-exercise/i18n';
+import { loginValidations } from '@form-exercise/yup';
 export interface FormValues {
   email: string;
   password: string;
 }
 
-yup.setLocale({
-  mixed: {
-    default: 'validation.invalid',
-    required: 'validation.required',
-  },
-  string: {
-    min: 'validation.invalid',
-    email: 'validation.invalidEmail',
-  },
-});
-
-const formValuesSchema = yup
-  .object({
-    email: yup.string().email().required(),
-    password: yup.string().min(6).required(),
-  })
-  .required();
-
 export function Login() {
   const { setIsLogged } = useContext(IsLoggedContext);
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [error, setError] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({ resolver: yupResolver(formValuesSchema) });
+  } = useForm<FormValues>({ resolver: yupResolver(loginValidations) });
 
   const onSubmit: SubmitHandler<FormValues> = async (data): Promise<void> => {
-    setError(false);
+    setIsError(false);
     setLoading(true);
     await axios
       .post('/api/login', data)
@@ -62,7 +45,7 @@ export function Login() {
       })
       .catch((error) => {
         if (error.response.status === 401) {
-          setError(true);
+          setIsError(true);
         }
       });
     setLoading(false);
@@ -79,7 +62,7 @@ export function Login() {
     >
       <Grid item xs={3}>
         <Typography variant="h2" component="div">
-          {t('login')}
+          {t(i18nKeys.title.login)}
         </Typography>
 
         <Box
@@ -97,8 +80,9 @@ export function Login() {
                 }
                 id="email"
                 type="email"
-                label={`${t('email')} *`}
+                label={`${t(i18nKeys.input.label.email)}`}
                 variant={EnumVariant.outlined}
+                required={true}
                 register={register}
               />
             </Grid>
@@ -112,8 +96,9 @@ export function Login() {
                 }
                 id="password"
                 type="password"
-                label={`${t('password')} *`}
+                label={`${t(i18nKeys.input.label.password)}`}
                 variant={EnumVariant.outlined}
+                required={true}
                 register={register}
               />
             </Grid>
@@ -127,22 +112,13 @@ export function Login() {
                 endIcon={<LockOpenIcon />}
                 loadingPosition="end"
               >
-                {t('login')}
+                {t(i18nKeys.button.login)}
               </LoadingButton>
             </Grid>
           </Grid>
         </Box>
 
-        <Typography
-          gutterBottom
-          variant="body1"
-          sx={{
-            color: '#d32f2f',
-            height: '1rem',
-          }}
-        >
-          {error ? t('errorLogin') : ''}
-        </Typography>
+        <ErrorMessage errorMessage={isError ? t(i18nKeys.error.login) : ''} />
       </Grid>
     </Grid>
   );

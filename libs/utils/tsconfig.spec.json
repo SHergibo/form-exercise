@@ -15,7 +15,6 @@
     "**/*.spec.js",
     "**/*.test.jsx",
     "**/*.spec.jsx",
-    "**/*.d.ts",
-    "../../apps/login-flow/types/material-ui.d.ts"
+    "**/*.d.ts"
   ]
 }

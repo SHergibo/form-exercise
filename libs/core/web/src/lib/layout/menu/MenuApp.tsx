@@ -1,56 +1,43 @@
+import { useState, MouseEvent } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import { Outlet, useLocation } from 'react-router-dom';
-
-import * as React from 'react';
+import { Outlet } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { i18nKeys, languageSwitcher } from '@form-exercise/i18n';
+import { MenuTitle } from '@form-exercise/core/web';
 
 export function MenuApp() {
   const { t } = useTranslation();
-  const location = useLocation();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const languageSwitcher = (lang: string): void => {
-    i18next.changeLanguage(lang, (err, t) => {
-      t('key');
-    });
-  };
-
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box flexGrow={1}>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {location.pathname === '/' && t('login')}
-              {location.pathname === '/admin' && t('administration')}
-              {location.pathname !== '/admin' &&
-                location.pathname !== '/' &&
-                t('404NotFound')}
-            </Typography>
+            <MenuTitle />
 
             <Button
               id="basic-button"
+              variant="contained"
+              disableElevation
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}
-              sx={{ color: 'white' }}
             >
-              {t('switchLang')}
+              {t(i18nKeys.button.switchLang)}
             </Button>
             <Menu
               id="basic-menu"
@@ -67,7 +54,7 @@ export function MenuApp() {
                   languageSwitcher('fr');
                 }}
               >
-                {t('french')}
+                {t(i18nKeys.lang.french)}
               </MenuItem>
               <MenuItem
                 onClick={() => {
@@ -75,7 +62,7 @@ export function MenuApp() {
                   languageSwitcher('en');
                 }}
               >
-                {t('english')}
+                {t(i18nKeys.lang.english)}
               </MenuItem>
             </Menu>
           </Toolbar>

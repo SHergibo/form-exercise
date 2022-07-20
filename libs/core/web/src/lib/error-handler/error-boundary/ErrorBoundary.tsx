@@ -1,7 +1,7 @@
-import { Component, ReactNode, ErrorInfo } from 'react';
+import { Component, ReactNode } from 'react';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 import {
   NavigateFunction,
   Location,
@@ -9,10 +9,11 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import { i18nKeys } from '@form-exercise/i18n';
 
 interface Props {
   children?: ReactNode;
-  t: any;
+  t: TFunction<'translation', undefined>;
   navigate: NavigateFunction;
   location: Location;
 }
@@ -29,10 +30,6 @@ class ErrorBoundaryClass extends Component<Props, State> {
   static getDerivedStateFromError(): State {
     return { hasError: true };
   }
-  override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log('error', error);
-    console.log('errorInfo', errorInfo);
-  }
 
   override render() {
     const { t } = this.props;
@@ -41,7 +38,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
       return (
         <>
           <Typography variant="h2" component="div">
-            {t('boundaryError')}
+            {t(i18nKeys.title.boundaryError)}
           </Typography>
 
           <Grid
@@ -58,7 +55,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
                   location.reload();
                 }}
               >
-                {t('returnLastPage')}
+                {t(i18nKeys.button.returnLastPage)}
               </Button>
             </Grid>
             <Grid item>
@@ -68,7 +65,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
                   navigate('/');
                 }}
               >
-                {t('returnLogin')}
+                {t(i18nKeys.button.returnLogin)}
               </Button>
             </Grid>
           </Grid>
@@ -81,7 +78,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
 
 interface IErrorBoundary {
   children?: ReactNode;
-  t: any;
+  t: TFunction<'translation', undefined>;
 }
 
 const ErrorBoundary = (props: IErrorBoundary) => {

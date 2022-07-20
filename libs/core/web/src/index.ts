@@ -1,4 +1,5 @@
 export * from './lib/context/AuthContext';
+export * from './lib/layout/menu';
 export * from './lib/pages/not-found/NotFound';
 export * from './lib/error-handler/error-boundary/ErrorBoundary';
 export * from './lib/layout/menu/MenuApp';

@@ -1,7 +1,5 @@
+import { CORRECT_EMAIL, CORRECT_PASSWORD } from '@form-exercise/utils';
 import { rest } from 'msw';
-
-const CORRECT_EMAIL = 'test@test.com';
-const CORRECT_PASSWORD = '12345678';
 
 export const getAuthenticationMSW = () => [
   rest.post<{ email?: string; password?: string }>(
