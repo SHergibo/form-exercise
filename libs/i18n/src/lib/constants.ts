@@ -1,5 +1,5 @@
-export type ILanguages = 'fr' | 'en';
+export type Languages = 'fr' | 'en';
 export const Languages = {
-  FR: 'fr' as ILanguages,
-  EN: 'en' as ILanguages,
+  FR: 'fr' as Languages,
+  EN: 'en' as Languages,
 };
