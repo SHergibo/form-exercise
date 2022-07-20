@@ -1,1 +1,1 @@
-export * from './menutitle/MenuTitle';
+export * from './menu-title/MenuTitle';
