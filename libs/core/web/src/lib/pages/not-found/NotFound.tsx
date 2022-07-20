@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useNavigationType } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { i18nKeys } from '@form-exercise/i18n';
 
