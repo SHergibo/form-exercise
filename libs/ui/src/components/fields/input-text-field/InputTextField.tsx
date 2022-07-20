@@ -1,6 +1,6 @@
 import TextField from '@mui/material/TextField';
 import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
-import { Control, useController } from 'react-hook-form';
+import { useController } from 'react-hook-form';
 
 export interface InputTextFieldProps {
   size?: EnumSize | undefined;
@@ -10,7 +10,6 @@ export interface InputTextFieldProps {
   label: string;
   variant?: EnumVariant | undefined;
   required?: boolean;
-  control: any;
 }
 
 export function InputTextField({
@@ -21,9 +20,8 @@ export function InputTextField({
   label,
   variant,
   required = false,
-  control,
 }: InputTextFieldProps) {
-  const { field } = useController({ name: id, control });
+  const { field } = useController({ name: id });
 
   return (
     <TextField
