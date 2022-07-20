@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '@mui/material/Button';
 import { i18nKeys } from '@form-exercise/i18n';
 import { ErrorMessage } from '@form-exercise/ui';
+import { AppRoute, getRoutePath } from '../../routes';
 
 export function Admin() {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ export function Admin() {
       .post('/api/logout')
       .then((response) => {
         if (response.status === 200) {
-          navigate('/');
+          navigate(getRoutePath(AppRoute.LOGIN));
         }
       })
       .catch((error) => {
