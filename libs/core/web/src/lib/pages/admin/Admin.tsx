@@ -55,7 +55,7 @@ export function Admin() {
         {t(i18nKeys.button.logout)}
       </LoadingButton>
 
-      <ErrorMessage errorMessage={error} />
+      <ErrorMessage message={error} />
 
       <Button
         variant="contained"
