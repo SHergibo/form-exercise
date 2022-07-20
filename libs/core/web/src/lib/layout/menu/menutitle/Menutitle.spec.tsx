@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Menutitle from './MenuTitle';
+import MenuTitle from './MenuTitle';
 
-describe('Menutitle', () => {
+describe('MenuTitle', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Menutitle />);
+    const { baseElement } = render(<MenuTitle />);
     expect(baseElement).toBeTruthy();
   });
 });

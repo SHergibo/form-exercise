@@ -1,5 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Admin, AuthContext, Login, NotFound } from '@form-exercise/core/web';
+import {
+  Admin,
+  AuthContext,
+  AppRoute,
+  getRoutePath,
+  Login,
+  NotFound,
+} from '@form-exercise/core/web';
 import i18n from 'i18next';
 import { I18nextProvider } from 'react-i18next';
 import { MenuApp } from '@form-exercise/core/web';
@@ -17,9 +24,12 @@ export function App() {
           <ThemeContext>
             <Routes>
               <Route element={<MenuApp />}>
-                <Route path="/" element={<Login />} />
                 <Route
-                  path="/admin"
+                  path={getRoutePath(AppRoute.LOGIN)}
+                  element={<Login />}
+                />
+                <Route
+                  path={getRoutePath(AppRoute.ADMIN)}
                   element={
                     <ErrorBoundary>
                       <Admin />

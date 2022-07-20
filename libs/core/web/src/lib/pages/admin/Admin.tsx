@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
@@ -55,7 +55,7 @@ export function Admin() {
         {t(i18nKeys.button.logout)}
       </LoadingButton>
 
-      <ErrorMessage errorMessage={error} />
+      <ErrorMessage message={error} />
 
       <Button
         variant="contained"

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { i18nKeys, languageSwitcher } from '@form-exercise/i18n';
+import { i18nKeys, Languages, languageSwitcher } from '@form-exercise/i18n';
 import { MenuTitle } from '@form-exercise/core/web';
 
 export function MenuApp() {
@@ -51,7 +51,7 @@ export function MenuApp() {
               <MenuItem
                 onClick={() => {
                   handleClose();
-                  languageSwitcher('fr');
+                  languageSwitcher(Languages.FR);
                 }}
               >
                 {t(i18nKeys.lang.french)}
@@ -59,7 +59,7 @@ export function MenuApp() {
               <MenuItem
                 onClick={() => {
                   handleClose();
-                  languageSwitcher('en');
+                  languageSwitcher(Languages.EN);
                 }}
               >
                 {t(i18nKeys.lang.english)}
