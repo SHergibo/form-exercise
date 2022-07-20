@@ -16,11 +16,11 @@ const theme = createTheme({
   },
 });
 
-interface IThemeContext {
+interface ThemeContext {
   children: ReactElement;
 }
 
-export function ThemeContext({ children }: IThemeContext) {
+export function ThemeContext({ children }: ThemeContext) {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
 
