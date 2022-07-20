@@ -18,7 +18,7 @@
   "title.boundaryError": "Oops une erreur est survenue!",
   "title.login": "Connexion",
   "title.notFound": "404 page non trouvée!",
-  "valiation.invalidEmail": "Email non valide",
+  "validation.invalidEmail": "Email non valide",
   "validation.invalid": "Ce champ est invalide",
   "validation.required": "Ce champ est requis"
 }

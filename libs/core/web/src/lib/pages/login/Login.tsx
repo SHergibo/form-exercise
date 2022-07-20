@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { i18nKeys } from '@form-exercise/i18n';
 import { loginValidations } from '@form-exercise/validations';
 import useAuthContext from 'libs/utils/src/hooks/useAuthContext';
+import { AppRoute, getRoutePath } from '../../routes';
 export interface FormValues {
   email: string;
   password: string;
@@ -28,6 +29,7 @@ export function Login() {
 
   const methods = useForm<FormValues>({
     defaultValues: { email: '', password: '' },
+    mode: 'all',
     resolver: yupResolver(loginValidations),
   });
 
@@ -44,7 +46,7 @@ export function Login() {
       .then((response) => {
         if (response.status === 200) {
           setIsLogged(true);
-          navigate('/admin');
+          navigate(getRoutePath(AppRoute.ADMIN));
         }
       })
       .catch((error) => {
@@ -73,6 +75,7 @@ export function Login() {
             sx={{
               minWidth: '20rem',
             }}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <Grid container direction="column" spacing={1}>
               <Grid item>
@@ -108,7 +111,6 @@ export function Login() {
                   variant="outlined"
                   type="submit"
                   fullWidth
-                  onClick={handleSubmit(onSubmit)}
                   loading={loading}
                   endIcon={<LockOpenIcon />}
                   loadingPosition="end"

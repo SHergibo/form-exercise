@@ -18,7 +18,7 @@
   "title.boundaryError": "Oops something went wrong!",
   "title.login": "Log in",
   "title.notFound": "404 page not found!",
-  "valiation.invalidEmail": "Invalid email",
+  "validation.invalidEmail": "Invalid email",
   "validation.invalid": "This field is invalid",
   "validation.required": "This field is required"
 }

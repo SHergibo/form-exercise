@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { i18nKeys } from '@form-exercise/i18n';
+import { AppRoute, getRoutePath } from '../../routes';
 
 interface Props {
   children?: ReactNode;
@@ -37,7 +38,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <>
-          <Typography variant="h2" component="div">
+          <Typography variant="h2">
             {t(i18nKeys.title.boundaryError)}
           </Typography>
 
@@ -62,7 +63,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
               <Button
                 variant="contained"
                 onClick={() => {
-                  navigate('/');
+                  navigate(getRoutePath(AppRoute.LOGIN));
                 }}
               >
                 {t(i18nKeys.button.returnLogin)}
