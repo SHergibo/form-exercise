@@ -41,9 +41,7 @@ export function Admin() {
 
   return (
     <Box component="div">
-      <Typography variant="h2" component="div">
-        {t(i18nKeys.menu.title.admin)}
-      </Typography>
+      <Typography variant="h2">{t(i18nKeys.menu.title.admin)}</Typography>
 
       <LoadingButton
         variant="outlined"
