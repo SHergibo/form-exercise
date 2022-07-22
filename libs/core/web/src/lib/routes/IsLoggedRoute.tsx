@@ -1,4 +1,4 @@
-import useAuthContext from 'libs/utils/src/hooks/useAuthContext';
+import { useAuthContext } from '@form-exercise/utils';
 import { Navigate, Outlet } from 'react-router-dom';
 import { AppRoute, getRoutePath } from './routes';
 
