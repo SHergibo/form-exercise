@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '@mui/material/Button';
 import { i18nKeys } from '@form-exercise/i18n';
 import { ErrorMessage } from '@form-exercise/ui';
-import useAuthContext from 'libs/utils/src/hooks/useAuthContext';
+import { useAuthContext } from '@form-exercise/utils';
 import { AppRoute, getRoutePath } from '../../routes';
 
 export function Admin() {
