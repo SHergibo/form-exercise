@@ -1,39 +1,14 @@
 import { i18nKeys } from '@form-exercise/i18n';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import axios, { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
-import { useQuery } from 'react-query';
 import { SmallInfoCard } from '@form-exercise/ui';
-
-interface Film {
-  Poster: string;
-  Title: string;
-  Type: string;
-  Year: string;
-  imdbID: string;
-}
-
-interface Films {
-  Reponse: string;
-  Search: Film[];
-  totalResults: string;
-}
+import { useFetchOmdb } from '@form-exercise/utils';
+import { Film } from '@form-exercise/data/interface';
 
 export function FilmList() {
   const { t } = useTranslation();
-
-  const getFilms = async (): Promise<Films> => {
-    const { data } = await axios(
-      `http://www.omdbapi.com/?apikey=${process.env['NX_OMDB_API_KEY']}&s=Batman&type=movie`
-    );
-    return data;
-  };
-
-  const { isLoading, data: films } = useQuery<Films, AxiosError>(
-    'films',
-    getFilms
-  );
+  const { isLoading, data: films } = useFetchOmdb({ searchBy: 'Batman' });
 
   return (
     <>
