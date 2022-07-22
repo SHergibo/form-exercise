@@ -2,7 +2,7 @@ import { useAuthContext } from '@form-exercise/utils';
 import { Navigate, Outlet } from 'react-router-dom';
 import { AppRoute, getRoutePath } from './routes';
 
-export const IsLoggedRoute = () => {
+export const LoggedRoute = () => {
   const { isLogged } = useAuthContext();
 
   return isLogged ? (

@@ -8,7 +8,7 @@ import {
   NotFound,
   MenuApp,
   ProtectedRoute,
-  IsLoggedRoute,
+  LoggedRoute,
   FilmList,
   QueryClientRoute,
 } from '@form-exercise/core/web';
@@ -29,7 +29,7 @@ export function App() {
             <ErrorBoundary>
               <Routes>
                 <Route element={<MenuApp />}>
-                  <Route element={<IsLoggedRoute />}>
+                  <Route element={<LoggedRoute />}>
                     <Route
                       path={getRoutePath(AppRoute.LOGIN)}
                       element={<Login />}
