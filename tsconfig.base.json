@@ -18,6 +18,7 @@
     "paths": {
       "@form-exercise/core/web": ["libs/core/web/src/index.ts"],
       "@form-exercise/data/enum": ["libs/data/enum/src/index.ts"],
+      "@form-exercise/data/interface": ["libs/data/interface/src/index.ts"],
       "@form-exercise/i18n": ["libs/i18n/src/index.ts"],
       "@form-exercise/ui": ["libs/ui/src/index.ts"],
       "@form-exercise/utils": ["libs/utils/src/index.ts"],
