@@ -82,7 +82,7 @@ interface ErrorBoundary {
   t: TFunction<'translation', undefined>;
 }
 
-const ErrorBoundary = (props: ErrorBoundary) => {
+const ErrorBoundaryComp = (props: ErrorBoundary) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -91,4 +91,4 @@ const ErrorBoundary = (props: ErrorBoundary) => {
   );
 };
 
-export default withTranslation()(ErrorBoundary);
+export const ErrorBoundary = withTranslation()(ErrorBoundaryComp);
