@@ -13,8 +13,8 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
 import { i18nKeys } from '@form-exercise/i18n';
 import { loginValidations } from '@form-exercise/validations';
-import useAuthContext from 'libs/utils/src/hooks/useAuthContext';
 import { AppRoute, getRoutePath } from '../../routes';
+import { useAuthContext } from '@form-exercise/utils';
 export interface FormValues {
   email: string;
   password: string;
