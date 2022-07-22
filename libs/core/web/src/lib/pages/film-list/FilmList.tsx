@@ -15,12 +15,12 @@ export function FilmList() {
       <Typography variant="h2">{t(i18nKeys.title.filmList)}</Typography>
       {!isLoading && (
         <Grid container spacing={2}>
-          {films?.Search.map((film: Film) => (
-            <Grid item xs={2} key={film.imdbID}>
+          {films?.Search.map(({ Poster, Title, Year, imdbID }: Film) => (
+            <Grid item xs={2} key={imdbID}>
               <SmallInfoCard
-                image={film.Poster}
-                alt={film.Title}
-                title={`${film.Title} - ${film.Year}`}
+                image={Poster}
+                alt={Title}
+                title={`${Title} - ${Year}`}
               />
             </Grid>
           ))}
