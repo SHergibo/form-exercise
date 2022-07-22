@@ -8,6 +8,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "resolveJsonModule": true,
     "target": "es2015",
     "module": "esnext",
     "lib": ["es2017", "dom"],
@@ -17,7 +18,10 @@
     "paths": {
       "@form-exercise/core/web": ["libs/core/web/src/index.ts"],
       "@form-exercise/data/enum": ["libs/data/enum/src/index.ts"],
-      "@form-exercise/ui": ["libs/ui/src/index.ts"]
+      "@form-exercise/i18n": ["libs/i18n/src/index.ts"],
+      "@form-exercise/ui": ["libs/ui/src/index.ts"],
+      "@form-exercise/utils": ["libs/utils/src/index.ts"],
+      "@form-exercise/validations": ["libs/validations/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
