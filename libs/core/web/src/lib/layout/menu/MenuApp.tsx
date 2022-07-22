@@ -2,23 +2,46 @@ import { useState, MouseEvent } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys, Languages, languageSwitcher } from '@form-exercise/i18n';
-import { MenuTitle } from '@form-exercise/core/web';
+import { MenuTitle, getRoutePath, AppRoute } from '@form-exercise/core/web';
+import { useAuthContext } from '@form-exercise/utils';
+import styled from 'styled-components';
+import axios from 'axios';
+
+const IconButtonStyled = styled(IconButton)`
+  color: #ffffff;
+`;
 
 export function MenuApp() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { isLogged, setIsLogged } = useAuthContext();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const logout = async (): Promise<void> => {
+    await axios.post('/api/logout').then((response) => {
+      if (response.status === 200) {
+        setIsLogged(false);
+        navigate(getRoutePath(AppRoute.LOGIN));
+      }
+    });
   };
 
   return (
@@ -27,6 +50,30 @@ export function MenuApp() {
         <AppBar position="static">
           <Toolbar>
             <MenuTitle />
+
+            {isLogged && (
+              <>
+                <MenuItem
+                  onClick={() => {
+                    navigate(getRoutePath(AppRoute.ADMIN));
+                  }}
+                >
+                  <Typography textAlign="center">
+                    {t(i18nKeys.menu.title.admin)}
+                  </Typography>
+                </MenuItem>
+
+                <MenuItem
+                  onClick={() => {
+                    navigate(getRoutePath(AppRoute.FILMLIST));
+                  }}
+                >
+                  <Typography textAlign="center">
+                    {t(i18nKeys.menu.title.filmList)}
+                  </Typography>
+                </MenuItem>
+              </>
+            )}
 
             <Button
               id="basic-button"
@@ -65,6 +112,12 @@ export function MenuApp() {
                 {t(i18nKeys.lang.english)}
               </MenuItem>
             </Menu>
+
+            {isLogged && (
+              <IconButtonStyled aria-label="logout" onClick={logout}>
+                <MeetingRoomIcon />
+              </IconButtonStyled>
+            )}
           </Toolbar>
         </AppBar>
       </Box>
