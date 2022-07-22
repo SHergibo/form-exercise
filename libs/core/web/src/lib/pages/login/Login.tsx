@@ -21,7 +21,7 @@ export interface FormValues {
 }
 
 export function Login() {
-  const { setIsLogged } = useAuthContext();
+  const { login } = useAuthContext();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
@@ -35,23 +35,15 @@ export function Login() {
 
   const { handleSubmit } = methods;
 
-  const onSubmit: SubmitHandler<FormValues> = async (data): Promise<void> => {
+  const onSubmit: SubmitHandler<FormValues> = (data): void => {
     setIsError(false);
     setLoading(true);
-    await axios
-      .post('/api/login', data)
-      .then((response) => {
-        if (response.status === 200) {
-          setIsLogged(true);
-          navigate(getRoutePath(AppRoute.ADMIN));
-        }
-      })
-      .catch((error) => {
-        if (error.response.status === 401) {
-          setIsError(true);
-          setLoading(false);
-        }
-      });
+    login(data).catch((error) => {
+      if (error.response.status === 401) {
+        setIsError(true);
+        setLoading(false);
+      }
+    });
   };
 
   return (
