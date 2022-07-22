@@ -9,7 +9,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { getRoutePath, AppRoute } from '@form-exercise/core/web';
 
-export interface IAuthContext {
+export interface AuthContext {
   children: ReactElement;
 }
 
@@ -33,7 +33,7 @@ export const IsLoggedContext = createContext<ContextValue>(defaultValue);
 
 export const login = () => {};
 
-export function AuthContext({ children }: IAuthContext) {
+export function AuthContext({ children }: AuthContext) {
   let navigate = useNavigate();
   const [isLogged, setIsLogged] = useState(false);
 
