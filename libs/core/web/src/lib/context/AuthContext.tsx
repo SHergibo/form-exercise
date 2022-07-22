@@ -15,7 +15,7 @@ interface ContextValue {
   setIsLogged: Dispatch<SetStateAction<boolean>>;
 }
 const defaultValue = { isLogged: false, setIsLogged: () => null };
-export const IsLoggedContext = createContext<ContextValue>(defaultValue); //Créer un hook pour chercher le isLoggedContext
+export const IsLoggedContext = createContext<ContextValue>(defaultValue);
 
 export function AuthContext({ children }: IAuthContext) {
   const [isLogged, setIsLogged] = useState(false);
