@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
