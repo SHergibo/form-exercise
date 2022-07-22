@@ -9,9 +9,7 @@ export function NotFound() {
   const navigate = useNavigate();
   return (
     <>
-      <Typography variant="h2" component="div">
-        {t(i18nKeys.title.notFound)}
-      </Typography>
+      <Typography variant="h2">{t(i18nKeys.title.notFound)}</Typography>
       <Button
         variant="contained"
         onClick={() => {
