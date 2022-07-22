@@ -1,10 +1,10 @@
 import TextField from '@mui/material/TextField';
 import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
 import { useController } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 export interface InputTextFieldProps {
   size?: EnumSize | undefined;
-  error?: string;
   id: string;
   type: string;
   label: string;
@@ -14,25 +14,28 @@ export interface InputTextFieldProps {
 
 export function InputTextField({
   size = undefined,
-  error,
   id,
   type,
   label,
   variant,
   required = false,
 }: InputTextFieldProps) {
-  const { field } = useController({ name: id });
+  const { t } = useTranslation();
+  const {
+    field,
+    fieldState: { error },
+  } = useController({ name: id });
 
   return (
     <TextField
       size={size}
       fullWidth
-      error={error ? true : false}
+      error={!!error}
       id={id}
       type={type}
       label={label}
       variant={variant}
-      helperText={error ? error : ' '}
+      helperText={error?.message ? t(error?.message) : ' '}
       required={required}
       {...field}
     />
