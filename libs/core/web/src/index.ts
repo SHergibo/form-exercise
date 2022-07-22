@@ -1,4 +1,3 @@
-export * from './lib/components';
 export * from './lib/context/AuthContext';
 export * from './lib/layout/menu';
 export * from './lib/pages/not-found/NotFound';
@@ -6,4 +5,5 @@ export * from './lib/error-handler/error-boundary/ErrorBoundary';
 export * from './lib/layout/menu/MenuApp';
 export * from './lib/pages/admin/Admin';
 export * from './lib/pages/login/Login';
+export * from './lib/pages/film-list/FilmList';
 export * from './lib/routes';
