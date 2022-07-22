@@ -6,12 +6,13 @@ import {
   getRoutePath,
   Login,
   NotFound,
+  MenuApp,
+  ProtectedRoute,
   IsLoggedRoute,
 } from '@form-exercise/core/web';
 import i18n from 'i18next';
 import { I18nextProvider } from 'react-i18next';
-import { MenuApp, ProtectedRoute } from '@form-exercise/core/web';
-import ErrorBoundary from 'libs/core/web/src/lib/error-handler/error-boundary/ErrorBoundary';
+import { ErrorBoundary } from '@form-exercise/core/web';
 import { initI18Next } from '@form-exercise/i18n';
 import { ThemeContext } from '@form-exercise/ui';
 
