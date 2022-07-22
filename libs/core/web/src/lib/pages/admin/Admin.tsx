@@ -45,7 +45,6 @@ export function Admin() {
 
       <LoadingButton
         variant="outlined"
-        type="submit"
         onClick={logout}
         loading={loading}
         endIcon={<LockIcon />}
