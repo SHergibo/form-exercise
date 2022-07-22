@@ -11,6 +11,7 @@ import { i18nKeys } from '@form-exercise/i18n';
 import { ErrorMessage } from '@form-exercise/ui';
 import useAuthContext from 'libs/utils/src/hooks/useAuthContext';
 import { AppRoute, getRoutePath } from '../../routes';
+import { FilmList } from '../../components';
 
 export function Admin() {
   const { isLogged, setIsLogged } = useAuthContext();
@@ -66,6 +67,8 @@ export function Admin() {
       >
         {t(i18nKeys.button.generateAnError)}
       </Button>
+
+      <FilmList />
     </Box>
   );
 }
