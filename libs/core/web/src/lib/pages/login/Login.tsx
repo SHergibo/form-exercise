@@ -49,9 +49,9 @@ export function Login() {
       .catch((error) => {
         if (error.response.status === 401) {
           setIsError(true);
+          setLoading(false);
         }
       });
-    setLoading(false);
   };
 
   return (
