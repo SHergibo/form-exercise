@@ -14,7 +14,6 @@ import { i18nKeys, Languages, languageSwitcher } from '@form-exercise/i18n';
 import { MenuTitle, getRoutePath, AppRoute } from '@form-exercise/core/web';
 import { useAuthContext } from '@form-exercise/utils';
 import styled from 'styled-components';
-import axios from 'axios';
 
 const IconButtonStyled = styled(IconButton)`
   color: #ffffff;
@@ -23,7 +22,7 @@ const IconButtonStyled = styled(IconButton)`
 export function MenuApp() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { isLogged, setIsLogged } = useAuthContext();
+  const { isLogged, logout } = useAuthContext();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -33,15 +32,6 @@ export function MenuApp() {
 
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const logout = async (): Promise<void> => {
-    await axios.post('/api/logout').then((response) => {
-      if (response.status === 200) {
-        setIsLogged(false);
-        navigate(getRoutePath(AppRoute.LOGIN));
-      }
-    });
   };
 
   return (
