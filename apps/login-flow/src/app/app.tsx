@@ -15,8 +15,10 @@ import { I18nextProvider } from 'react-i18next';
 import { ErrorBoundary } from '@form-exercise/core/web';
 import { initI18Next } from '@form-exercise/i18n';
 import { ThemeContext } from '@form-exercise/ui';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 initI18Next();
+const queryClient = new QueryClient();
 
 export function App() {
   return (
@@ -37,7 +39,9 @@ export function App() {
                     path={getRoutePath(AppRoute.ADMIN)}
                     element={
                       <ErrorBoundary>
-                        <Admin />
+                        <QueryClientProvider client={queryClient}>
+                          <Admin />
+                        </QueryClientProvider>
                       </ErrorBoundary>
                     }
                   />
