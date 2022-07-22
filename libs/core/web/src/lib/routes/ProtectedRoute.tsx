@@ -8,6 +8,6 @@ export const ProtectedRoute = () => {
   return isLogged ? (
     <Outlet />
   ) : (
-    <Navigate replace to={getRoutePath(AppRoute.ADMIN)} />
+    <Navigate replace to={getRoutePath(AppRoute.LOGIN)} />
   );
 };
