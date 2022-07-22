@@ -40,4 +40,9 @@ export const routesArray: RoutesArray[] = [
   { path: ROUTES.FILMLIST.path, routeName: ROUTES.FILMLIST.routeName },
 ];
 
+export const adminRoutesArray: RoutesArray[] = [
+  { path: ROUTES.ADMIN.path, routeName: ROUTES.ADMIN.routeName },
+  { path: ROUTES.FILMLIST.path, routeName: ROUTES.FILMLIST.routeName },
+];
+
 export { Routes as AppRoute };
