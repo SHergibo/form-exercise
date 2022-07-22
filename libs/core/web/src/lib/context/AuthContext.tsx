@@ -13,14 +13,19 @@ export interface IAuthContext {
   children: ReactElement;
 }
 
+interface DataLogin {
+  email: string;
+  password: string;
+}
+
 interface ContextValue {
   isLogged: boolean;
-  setIsLogged: Dispatch<SetStateAction<boolean>>;
+  login: ({}: DataLogin) => Promise<AxiosResponse>;
   logout: () => Promise<AxiosResponse>;
 }
 const defaultValue = {
   isLogged: false,
-  setIsLogged: () => null,
+  login: ({}) => ({} as Promise<AxiosResponse>),
   logout: () => ({} as Promise<AxiosResponse>),
 };
 
@@ -31,6 +36,16 @@ export const login = () => {};
 export function AuthContext({ children }: IAuthContext) {
   let navigate = useNavigate();
   const [isLogged, setIsLogged] = useState(false);
+
+  const login = (data: DataLogin) => {
+    return axios.post('/api/login', data).then((response) => {
+      if (response.status === 200) {
+        setIsLogged(true);
+        navigate(getRoutePath(AppRoute.ADMIN));
+      }
+      return response;
+    });
+  };
 
   const logout = () => {
     return axios.post('/api/logout').then((response) => {
@@ -43,7 +58,7 @@ export function AuthContext({ children }: IAuthContext) {
   };
 
   return (
-    <IsLoggedContext.Provider value={{ isLogged, setIsLogged, logout }}>
+    <IsLoggedContext.Provider value={{ isLogged, login, logout }}>
       {children}
     </IsLoggedContext.Provider>
   );
