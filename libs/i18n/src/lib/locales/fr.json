@@ -12,13 +12,15 @@
   "lang.english": "Anglais",
   "lang.french": "Français",
   "menu.title.admin": "Administration",
+  "menu.title.filmList": "Liste de films",
   "menu.title.login": "Connexion",
   "menu.title.notFound": "404 page non trouvée!",
   "title.admin": "Administration",
   "title.boundaryError": "Oops une erreur est survenue!",
+  "title.filmList": "Liste de films",
   "title.login": "Connexion",
   "title.notFound": "404 page non trouvée!",
-  "validation.invalidEmail": "Email non valide",
   "validation.invalid": "Ce champ est invalide",
+  "validation.invalidEmail": "Email non valide",
   "validation.required": "Ce champ est requis"
 }
