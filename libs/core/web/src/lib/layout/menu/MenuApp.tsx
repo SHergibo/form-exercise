@@ -13,11 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys, Languages, languageSwitcher } from '@form-exercise/i18n';
 import { MenuTitle, getRoutePath, AppRoute } from '@form-exercise/core/web';
 import { useAuthContext } from '@form-exercise/utils';
-import styled from 'styled-components';
-
-const IconButtonStyled = styled(IconButton)`
-  color: #ffffff;
-`;
+import { IconButtonStyled } from '@form-exercise/ui';
 
 export function MenuApp() {
   const { t } = useTranslation();
@@ -104,7 +100,7 @@ export function MenuApp() {
             </Menu>
 
             {isLogged && (
-              <IconButtonStyled aria-label="logout" onClick={logout}>
+              <IconButtonStyled func={logout}>
                 <MeetingRoomIcon />
               </IconButtonStyled>
             )}
