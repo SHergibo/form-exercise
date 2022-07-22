@@ -78,9 +78,6 @@ export function Login() {
               <Grid item>
                 <InputTextField
                   size={EnumSize.small}
-                  error={
-                    errors?.email?.message ? t(`${errors?.email?.message}`) : ''
-                  }
                   id="email"
                   type="email"
                   label={`${t(i18nKeys.input.label.email)}`}
@@ -91,11 +88,6 @@ export function Login() {
               <Grid item>
                 <InputTextField
                   size={EnumSize.small}
-                  error={
-                    errors?.password?.message
-                      ? t(`${errors?.password?.message}`)
-                      : ''
-                  }
                   id="password"
                   type="password"
                   label={`${t(i18nKeys.input.label.password)}`}
