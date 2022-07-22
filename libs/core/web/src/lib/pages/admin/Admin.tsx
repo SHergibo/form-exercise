@@ -14,7 +14,7 @@ import { AppRoute, getRoutePath } from '../../routes';
 import { FilmList } from '../../components';
 
 export function Admin() {
-  const { isLogged, setIsLogged } = useAuthContext();
+  const { setIsLogged } = useAuthContext();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [error, setError] = useState('');
