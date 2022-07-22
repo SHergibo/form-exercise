@@ -33,10 +33,7 @@ export function Login() {
     resolver: yupResolver(loginValidations),
   });
 
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit: SubmitHandler<FormValues> = async (data): Promise<void> => {
     setIsError(false);
