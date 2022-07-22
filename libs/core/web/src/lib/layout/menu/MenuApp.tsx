@@ -10,7 +10,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys, Languages, languageSwitcher } from '@form-exercise/i18n';
-import { MenuTitle, getRoutePath, AppRoute } from '@form-exercise/core/web';
+import { MenuTitle, adminRoutesArray } from '@form-exercise/core/web';
 import { useAuthContext } from '@form-exercise/utils';
 import { IconButtonStyled } from '@form-exercise/ui';
 
@@ -36,29 +36,19 @@ export function MenuApp() {
           <Toolbar>
             <MenuTitle />
 
-            {isLogged && (
-              <>
+            {isLogged &&
+              adminRoutesArray.map((route, index) => (
                 <MenuItem
+                  key={`${route.routeName}-${index}`}
                   onClick={() => {
-                    navigate(getRoutePath(AppRoute.ADMIN));
+                    navigate(route.path);
                   }}
                 >
                   <Typography textAlign="center">
-                    {t(i18nKeys.menu.title.admin)}
+                    {t(route.routeName)}
                   </Typography>
                 </MenuItem>
-
-                <MenuItem
-                  onClick={() => {
-                    navigate(getRoutePath(AppRoute.FILMLIST));
-                  }}
-                >
-                  <Typography textAlign="center">
-                    {t(i18nKeys.menu.title.filmList)}
-                  </Typography>
-                </MenuItem>
-              </>
-            )}
+              ))}
 
             <Button
               id="basic-button"
