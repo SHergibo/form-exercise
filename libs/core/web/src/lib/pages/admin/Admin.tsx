@@ -32,8 +32,8 @@ export function Admin() {
       })
       .catch((error) => {
         setError(t(i18nKeys.error.logout));
+        setLoading(false);
       });
-    setLoading(false);
   };
 
   useEffect(() => {
