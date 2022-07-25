@@ -12,7 +12,7 @@ export function FilmList() {
 
   return (
     <>
-      <Typography variant="h2">{t(i18nKeys.title.filmList)}</Typography>
+      <Typography variant="h2">{t(i18nKeys.title.moviesList)}</Typography>
       {!isLoading && (
         <Grid container spacing={2}>
           {movies?.Search.map(({ Poster, Title, Year, imdbID }: Movie) => (
