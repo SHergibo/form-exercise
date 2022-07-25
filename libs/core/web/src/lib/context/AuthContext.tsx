@@ -30,7 +30,7 @@ export function useAuthContext() {
 }
 
 export function AuthContext({ children }: AuthContext) {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [isLogged, setIsLogged] = useState(false);
 
   const login = (data: DataLogin) => {
