@@ -19,7 +19,7 @@ interface ContextValue {
 }
 const defaultValue = {
   isLogged: false,
-  login: ({}) => ({} as Promise<AxiosResponse>),
+  login: () => ({} as Promise<AxiosResponse>),
   logout: () => ({} as Promise<AxiosResponse>),
 };
 
