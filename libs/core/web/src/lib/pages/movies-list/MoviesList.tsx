@@ -6,7 +6,7 @@ import { SmallInfoCard } from '@form-exercise/ui';
 import { useFetchOmdb } from '@form-exercise/utils';
 import { Movie } from '@form-exercise/data/interface';
 
-export function FilmList() {
+export function MoviesList() {
   const { t } = useTranslation();
   const { isLoading, data: movies } = useFetchOmdb({ searchBy: 'Batman' });
 
@@ -30,4 +30,4 @@ export function FilmList() {
   );
 }
 
-export default FilmList;
+export default MoviesList;

@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import FilmList from './FilmList';
+import MoviesList from './MoviesList';
 
-describe('FilmList', () => {
+describe('MoviesList', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<FilmList />);
+    const { baseElement } = render(<MoviesList />);
     expect(baseElement).toBeTruthy();
   });
 });
