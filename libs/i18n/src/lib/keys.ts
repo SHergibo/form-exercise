@@ -6,11 +6,13 @@ export const i18nKeys = {
     switchLang: 'button.switchLang',
     returnLogin: 'button.returnLogin',
     returnLastPage: 'button.returnLastPage',
+    search: 'button.search',
   },
   input: {
     label: {
       email: 'input.label.email',
       password: 'input.label.password',
+      movie: 'input.label.movie',
     },
   },
   menu: {
