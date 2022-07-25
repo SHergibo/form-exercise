@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
@@ -21,7 +20,6 @@ export interface FormValues {
 export function Login() {
   const { login } = useAuthContext();
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
 
