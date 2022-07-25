@@ -20,10 +20,7 @@ export function useGetMovies({ searchBy }: UseGetMovies) {
     return data;
   };
 
-  const { isLoading, data, error } = useQuery<Movies, AxiosError>(
-    'movies',
-    getMovies
-  );
+  const query = useQuery<Movies, AxiosError>('movies', getMovies);
 
-  return { isLoading, data, error };
+  return query;
 }
