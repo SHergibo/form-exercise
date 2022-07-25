@@ -1,0 +1,7 @@
+{
+  "goodEmail": "test@test.com",
+  "goodPassword": "12345678",
+  "badEmail": "hsjshdjshdskjhdjhd",
+  "badPassword": "123456789",
+  "shortPassword": "123"
+}
