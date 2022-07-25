@@ -8,15 +8,19 @@ import {
   NotFound,
   MenuApp,
   ProtectedRoute,
-  LoggedRoute,
-  QueryClientRoute,
   MoviesList,
+  LoggedRoute,
 } from '@form-exercise/core/web';
 import i18n from 'i18next';
 import { I18nextProvider } from 'react-i18next';
 import { ErrorBoundary } from '@form-exercise/core/web';
 import { initI18Next } from '@form-exercise/i18n';
 import { ThemeContext } from '@form-exercise/ui';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 20000 } },
+});
 
 initI18Next();
 
@@ -26,17 +30,17 @@ export function App() {
       <BrowserRouter>
         <AuthContext>
           <ThemeContext>
-            <ErrorBoundary>
-              <Routes>
-                <Route element={<MenuApp />}>
-                  <Route element={<LoggedRoute />}>
-                    <Route
-                      path={getRoutePath(AppRoute.LOGIN)}
-                      element={<Login />}
-                    />
-                  </Route>
-                  <Route element={<ProtectedRoute />}>
-                    <Route element={<QueryClientRoute />}>
+            <QueryClientProvider client={queryClient}>
+              <ErrorBoundary>
+                <Routes>
+                  <Route element={<MenuApp />}>
+                    <Route element={<LoggedRoute />}>
+                      <Route
+                        path={getRoutePath(AppRoute.LOGIN)}
+                        element={<Login />}
+                      />
+                    </Route>
+                    <Route element={<ProtectedRoute />}>
                       <Route
                         path={getRoutePath(AppRoute.ADMIN)}
                         element={<Admin />}
@@ -46,11 +50,11 @@ export function App() {
                         element={<MoviesList />}
                       />
                     </Route>
+                    <Route path="*" element={<NotFound />} />
                   </Route>
-                  <Route path="*" element={<NotFound />} />
-                </Route>
-              </Routes>
-            </ErrorBoundary>
+                </Routes>
+              </ErrorBoundary>
+            </QueryClientProvider>
           </ThemeContext>
         </AuthContext>
       </BrowserRouter>
