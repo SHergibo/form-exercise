@@ -9,8 +9,8 @@ import {
   MenuApp,
   ProtectedRoute,
   LoggedRoute,
-  FilmList,
   QueryClientRoute,
+  MoviesList,
 } from '@form-exercise/core/web';
 import i18n from 'i18next';
 import { I18nextProvider } from 'react-i18next';
@@ -43,7 +43,7 @@ export function App() {
                       ></Route>
                       <Route
                         path={getRoutePath(AppRoute.MOVIESLIST)}
-                        element={<FilmList />}
+                        element={<MoviesList />}
                       />
                     </Route>
                   </Route>
