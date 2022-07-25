@@ -14,12 +14,12 @@ interface DataLogin {
 
 interface ContextValue {
   isLogged: boolean;
-  login: ({}: DataLogin) => Promise<AxiosResponse>;
+  login: (parameters: DataLogin) => Promise<AxiosResponse>;
   logout: () => Promise<AxiosResponse>;
 }
 const defaultValue = {
   isLogged: false,
-  login: ({}) => ({} as Promise<AxiosResponse>),
+  login: () => ({} as Promise<AxiosResponse>),
   logout: () => ({} as Promise<AxiosResponse>),
 };
 
@@ -30,7 +30,7 @@ export function useAuthContext() {
 }
 
 export function AuthContext({ children }: AuthContext) {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [isLogged, setIsLogged] = useState(false);
 
   const login = (data: DataLogin) => {

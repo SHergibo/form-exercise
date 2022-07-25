@@ -10,7 +10,7 @@ export interface InputTextFieldProps {
   label: string;
   variant?: EnumVariant | undefined;
   required?: boolean;
-  helperTextMessage?: boolean;
+  defaultHelperText?: string;
 }
 
 export function InputTextField({
@@ -20,7 +20,7 @@ export function InputTextField({
   label,
   variant,
   required = false,
-  helperTextMessage = true,
+  defaultHelperText = ' ',
 }: InputTextFieldProps) {
   const { t } = useTranslation();
   const {
@@ -37,9 +37,7 @@ export function InputTextField({
       type={type}
       label={label}
       variant={variant}
-      helperText={
-        error?.message ? t(error?.message) : helperTextMessage ? ' ' : null
-      }
+      helperText={error?.message ? t(error?.message) : defaultHelperText}
       required={required}
       {...field}
     />

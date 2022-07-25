@@ -57,7 +57,7 @@ export function MoviesList() {
                   type="movieSearch"
                   label={`${t(i18nKeys.input.label.movie)}`}
                   variant={EnumVariant.outlined}
-                  helperTextMessage={false}
+                  defaultHelperText={''}
                 />
               </Grid>
               <Grid item>

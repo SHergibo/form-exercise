@@ -2,6 +2,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ReactElement } from 'react';
 
 const theme = createTheme({
+  palette: {
+    white: { main: '#ffffff' },
+  },
   typography: {
     error: {
       color: '#d32f2f',
