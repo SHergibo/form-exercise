@@ -42,7 +42,7 @@ export function App() {
                         element={<Admin />}
                       ></Route>
                       <Route
-                        path={getRoutePath(AppRoute.FILMLIST)}
+                        path={getRoutePath(AppRoute.MOVIESLIST)}
                         element={<FilmList />}
                       />
                     </Route>
