@@ -18,7 +18,7 @@ export const i18nKeys = {
       login: 'menu.title.login',
       admin: 'menu.title.admin',
       notFound: 'menu.title.notFound',
-      filmList: 'menu.title.filmList',
+      moviesList: 'menu.title.moviesList',
     },
   },
   title: {
@@ -26,7 +26,7 @@ export const i18nKeys = {
     admin: 'title.admin',
     notFound: 'title.notFound',
     boundaryError: 'title.boundaryError',
-    filmList: 'title.filmList',
+    moviesList: 'title.moviesList',
   },
   validation: {
     required: 'validation.required',
