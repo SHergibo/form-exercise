@@ -1,5 +1,7 @@
-import { i18nKeys } from '@form-exercise/i18n';
+import { i18nKeys, initI18Next } from '@form-exercise/i18n';
 import { t } from '../support/app.po';
+
+initI18Next();
 
 describe('Login', () => {
   beforeEach(() => cy.visit('/'));
