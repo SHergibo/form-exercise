@@ -10,8 +10,11 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys, Languages, languageSwitcher } from '@form-exercise/i18n';
-import { MenuTitle, adminRoutesArray } from '@form-exercise/core/web';
-import { useAuthContext } from '@form-exercise/utils';
+import {
+  MenuTitle,
+  adminRoutesArray,
+  useAuthContext,
+} from '@form-exercise/core/web';
 import { IconButtonStyled } from '@form-exercise/ui';
 
 export function MenuApp() {
