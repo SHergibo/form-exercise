@@ -29,8 +29,6 @@ export function useAuthContext() {
   return useContext(IsLoggedContext);
 }
 
-export const login = () => {};
-
 export function AuthContext({ children }: AuthContext) {
   let navigate = useNavigate();
   const [isLogged, setIsLogged] = useState(false);
