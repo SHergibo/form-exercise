@@ -1,1 +1,1 @@
-export * from './useFetchOmdb';
+export * from './useGetMovies';

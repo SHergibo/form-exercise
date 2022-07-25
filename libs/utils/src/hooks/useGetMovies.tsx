@@ -2,9 +2,8 @@ import { Movie } from '@form-exercise/data/interface';
 import axios, { AxiosError } from 'axios';
 import { useQuery } from 'react-query';
 
-interface UseFetchOmdb {
+interface UseGetMovies {
   searchBy: string;
-  type?: string;
 }
 
 interface Movies {
@@ -13,10 +12,10 @@ interface Movies {
   totalResults: string;
 }
 
-export function useFetchOmdb({ searchBy, type = 'movie' }: UseFetchOmdb) {
+export function useGetMovies({ searchBy }: UseGetMovies) {
   const getMovies = async (): Promise<Movies> => {
     const { data } = await axios(
-      `http://www.omdbapi.com/?apikey=${process.env['NX_OMDB_API_KEY']}&s=${searchBy}&type=${type}`
+      `http://www.omdbapi.com/?apikey=${process.env['NX_OMDB_API_KEY']}&s=${searchBy}&type=movie`
     );
     return data;
   };
