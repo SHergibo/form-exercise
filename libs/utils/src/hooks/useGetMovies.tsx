@@ -16,9 +16,13 @@ export function useGetMovies({
   searchBy,
 }: UseGetMovies): UseQueryResult<Movies, AxiosError<unknown, any>> {
   const getMovies = async (): Promise<Movies> => {
-    const { data } = await axios(
-      `http://www.omdbapi.com/?apikey=${process.env['NX_OMDB_API_KEY']}&s=${searchBy}&type=movie`
-    );
+    const { data } = await axios('http://www.omdbapi.com', {
+      params: {
+        type: 'movie',
+        apiKey: process.env.NX_OMDB_API_KEY,
+        s: searchBy,
+      },
+    });
     return data;
   };
 
