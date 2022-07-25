@@ -8,13 +8,11 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { ErrorMessage, InputTextField } from '@form-exercise/ui';
 import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
 import Box from '@mui/material/Box';
-import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
 import { i18nKeys } from '@form-exercise/i18n';
 import { loginValidations } from '@form-exercise/validations';
-import { AppRoute, getRoutePath } from '../../routes';
-import { useAuthContext } from '@form-exercise/utils';
+import { useAuthContext } from '@form-exercise/core/web';
 export interface FormValues {
   email: string;
   password: string;
