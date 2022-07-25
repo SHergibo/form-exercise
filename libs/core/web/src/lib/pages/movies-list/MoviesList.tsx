@@ -3,12 +3,12 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
 import { SmallInfoCard } from '@form-exercise/ui';
-import { useFetchOmdb } from '@form-exercise/utils';
+import { useGetMovies } from '@form-exercise/utils';
 import { Movie } from '@form-exercise/data/interface';
 
 export function MoviesList() {
   const { t } = useTranslation();
-  const { isLoading, data: movies } = useFetchOmdb({ searchBy: 'Batman' });
+  const { isLoading, data: movies } = useGetMovies({ searchBy: 'Batman' });
 
   return (
     <>
