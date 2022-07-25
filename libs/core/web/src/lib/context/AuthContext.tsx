@@ -1,11 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import {
-  createContext,
-  Dispatch,
-  ReactElement,
-  SetStateAction,
-  useState,
-} from 'react';
+import { createContext, ReactElement, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getRoutePath, AppRoute } from '@form-exercise/core/web';
 
@@ -30,6 +24,10 @@ const defaultValue = {
 };
 
 export const IsLoggedContext = createContext<ContextValue>(defaultValue);
+
+export function useAuthContext() {
+  return useContext(IsLoggedContext);
+}
 
 export const login = () => {};
 
