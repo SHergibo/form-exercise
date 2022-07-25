@@ -2,21 +2,32 @@ import { useState, MouseEvent } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys, Languages, languageSwitcher } from '@form-exercise/i18n';
-import { MenuTitle } from '@form-exercise/core/web';
+import {
+  MenuTitle,
+  adminRoutesArray,
+  useAuthContext,
+} from '@form-exercise/core/web';
 
 export function MenuApp() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { isLogged, logout } = useAuthContext();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -27,6 +38,20 @@ export function MenuApp() {
         <AppBar position="static">
           <Toolbar>
             <MenuTitle />
+
+            {isLogged &&
+              adminRoutesArray.map((route, index) => (
+                <MenuItem
+                  key={`${route.routeName}-${index}`}
+                  onClick={() => {
+                    navigate(route.path);
+                  }}
+                >
+                  <Typography textAlign="center">
+                    {t(route.routeName)}
+                  </Typography>
+                </MenuItem>
+              ))}
 
             <Button
               id="basic-button"
@@ -65,6 +90,12 @@ export function MenuApp() {
                 {t(i18nKeys.lang.english)}
               </MenuItem>
             </Menu>
+
+            {isLogged && (
+              <IconButton aria-label="logout" color="white" onClick={logout}>
+                <MeetingRoomIcon />
+              </IconButton>
+            )}
           </Toolbar>
         </AppBar>
       </Box>

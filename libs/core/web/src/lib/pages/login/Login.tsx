@@ -1,27 +1,25 @@
 import { useState } from 'react';
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { ErrorMessage, InputTextField } from '@form-exercise/ui';
 import { EnumSize, EnumVariant } from '@form-exercise/data/enum';
 import Box from '@mui/material/Box';
-import axios from 'axios';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { useTranslation } from 'react-i18next';
 import { i18nKeys } from '@form-exercise/i18n';
 import { loginValidations } from '@form-exercise/validations';
-import { AppRoute, getRoutePath } from '../../routes';
+import { useAuthContext } from '@form-exercise/core/web';
 export interface FormValues {
   email: string;
   password: string;
 }
 
 export function Login() {
+  const { login } = useAuthContext();
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -31,27 +29,17 @@ export function Login() {
     resolver: yupResolver(loginValidations),
   });
 
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods;
+  const { handleSubmit } = methods;
 
-  const onSubmit: SubmitHandler<FormValues> = async (data): Promise<void> => {
+  const onSubmit: SubmitHandler<FormValues> = (data): void => {
     setIsError(false);
     setLoading(true);
-    await axios
-      .post('/api/login', data)
-      .then((response) => {
-        if (response.status === 200) {
-          navigate(getRoutePath(AppRoute.ADMIN));
-        }
-      })
-      .catch((error) => {
-        if (error.response.status === 401) {
-          setIsError(true);
-        }
-      });
-    setLoading(false);
+    login(data).catch((error) => {
+      if (error.response.status === 401) {
+        setIsError(true);
+        setLoading(false);
+      }
+    });
   };
 
   return (
