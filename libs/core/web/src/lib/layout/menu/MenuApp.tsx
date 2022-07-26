@@ -5,12 +5,11 @@ import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys, Languages, languageSwitcher } from '@form-exercise/i18n';
@@ -22,7 +21,6 @@ import {
 
 export function MenuApp() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { isLogged, logout } = useAuthContext();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
