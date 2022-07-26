@@ -10,11 +10,33 @@ describe('MenuApp', () => {
 
   it('Test if there is no menu list when user is not logged in', () => {
     cy.visit('/');
-    cy.get('.MuiToolbar-root').children('ul').should('not.exist');
+
+    cy.get('.MuiToolbar-root').children('nav').should('not.exist');
   });
   it('Test if there is a menu when user is logged in ', () => {
     cy.login();
-    cy.visit('/admin');
-    cy.get('.MuiToolbar-root').children('ul').children('li').should('exist');
+    cy.visit('/movies-list');
+
+    cy.get('a')
+      .contains(t(i18nKeys.menu.title.admin))
+      .parents('a')
+      .should('have.attr', 'href')
+      .and('include', 'admin')
+      .then((href) => {
+        cy.visit(href.toString());
+      });
+
+    cy.get('h6').contains(t(i18nKeys.menu.title.admin));
+
+    cy.get('a')
+      .contains(t(i18nKeys.menu.title.moviesList))
+      .parents('a')
+      .should('have.attr', 'href')
+      .and('include', 'movies-list')
+      .then((href) => {
+        cy.visit(href.toString());
+      });
+
+    cy.get('h6').contains(t(i18nKeys.menu.title.moviesList));
   });
 });
