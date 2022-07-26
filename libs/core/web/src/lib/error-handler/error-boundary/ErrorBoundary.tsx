@@ -54,7 +54,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
               <Button
                 variant="contained"
                 onClick={() => {
-                  this.state.hasError = false;
+                  this.setState({ hasError: false });
                   navigate(0);
                 }}
               >
@@ -64,9 +64,9 @@ class ErrorBoundaryClass extends Component<Props, State> {
             <Grid item>
               <Button
                 variant="contained"
-                onClick={() => {
-                  this.state.hasError = false;
-                  logout();
+                onClick={async () => {
+                  await logout();
+                  this.setState({ hasError: false });
                 }}
               >
                 {t(i18nKeys.button.returnLogin)}
