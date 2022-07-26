@@ -10,13 +10,15 @@ import {
 } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { i18nKeys } from '@form-exercise/i18n';
-import { AppRoute, getRoutePath } from '../../routes';
+import { useAuthContext } from '../../context/AuthContext';
+import { AxiosResponse } from 'axios';
 
 interface Props {
   children?: ReactNode;
   t: TFunction<'translation', undefined>;
   navigate: NavigateFunction;
   location: Location;
+  logout: () => Promise<AxiosResponse<any, any>>;
 }
 
 interface State {
@@ -33,8 +35,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
   }
 
   override render() {
-    const { t } = this.props;
-    const { navigate } = this.props;
+    const { t, navigate, logout } = this.props;
     if (this.state.hasError) {
       return (
         <>
@@ -53,7 +54,8 @@ class ErrorBoundaryClass extends Component<Props, State> {
               <Button
                 variant="contained"
                 onClick={() => {
-                  location.reload();
+                  this.state.hasError = false;
+                  navigate(0);
                 }}
               >
                 {t(i18nKeys.button.returnLastPage)}
@@ -63,7 +65,8 @@ class ErrorBoundaryClass extends Component<Props, State> {
               <Button
                 variant="contained"
                 onClick={() => {
-                  navigate(getRoutePath(AppRoute.LOGIN));
+                  this.state.hasError = false;
+                  logout();
                 }}
               >
                 {t(i18nKeys.button.returnLogin)}
@@ -85,9 +88,15 @@ interface ErrorBoundary {
 const _ErrorBoundary = (props: ErrorBoundary) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { logout } = useAuthContext();
 
   return (
-    <ErrorBoundaryClass {...props} navigate={navigate} location={location} />
+    <ErrorBoundaryClass
+      {...props}
+      navigate={navigate}
+      location={location}
+      logout={logout}
+    />
   );
 };
 
