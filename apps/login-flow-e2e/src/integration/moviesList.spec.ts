@@ -5,24 +5,8 @@ initI18Next();
 
 describe('Movies list', () => {
   beforeEach(() => {
-    cy.visit('/');
-    cy.intercept('POST', '/api/login', {
-      status: 200,
-    });
-
-    cy.fixture('login').then((fixture) => {
-      cy.get('input[type=email]').type(fixture.goodEmail);
-
-      cy.get('input[type=password]').type(fixture.goodPassword);
-
-      cy.get('button[type=submit]')
-        .should('contain.text', t(i18nKeys.button.login))
-        .click();
-
-      cy.get('h6').should('contain.text', t(i18nKeys.menu.title.admin));
-
-      cy.get('li').contains(t(i18nKeys.menu.title.moviesList)).click();
-    });
+    cy.login();
+    cy.visit('movies-list');
   });
   it('Test if all movies in movies list are shown', () => {
     cy.intercept(
