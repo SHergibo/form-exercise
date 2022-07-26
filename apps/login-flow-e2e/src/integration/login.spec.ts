@@ -4,7 +4,10 @@ import { t } from '../support/app.po';
 initI18Next();
 
 describe('Login form', () => {
-  beforeEach(() => cy.visit('/'));
+  beforeEach(() => {
+    cy.logout();
+    cy.visit('/');
+  });
   describe('good flow', () => {
     it('Test login with good credentials', () => {
       cy.intercept('POST', '/api/login', {
