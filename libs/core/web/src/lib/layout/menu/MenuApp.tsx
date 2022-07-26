@@ -39,19 +39,22 @@ export function MenuApp() {
           <Toolbar>
             <MenuTitle />
 
-            {isLogged &&
-              adminRoutesArray.map((route, index) => (
-                <MenuItem
-                  key={`${route.routeName}-${index}`}
-                  onClick={() => {
-                    navigate(route.path);
-                  }}
-                >
-                  <Typography textAlign="center">
-                    {t(route.routeName)}
-                  </Typography>
-                </MenuItem>
-              ))}
+            {isLogged && (
+              <Box component="ul" display="flex" flexDirection="row">
+                {adminRoutesArray.map((route, index) => (
+                  <MenuItem
+                    key={`${route.routeName}-${index}`}
+                    onClick={() => {
+                      navigate(route.path);
+                    }}
+                  >
+                    <Typography textAlign="center">
+                      {t(route.routeName)}
+                    </Typography>
+                  </MenuItem>
+                ))}
+              </Box>
+            )}
 
             <Button
               id="basic-button"
