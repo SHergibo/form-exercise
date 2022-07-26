@@ -40,18 +40,19 @@ export function MenuApp() {
             <MenuTitle />
 
             {isLogged && (
-              <Box component="ul" display="flex" flexDirection="row">
+              <Box display="flex" flexDirection="row">
                 {adminRoutesArray.map((route, index) => (
-                  <MenuItem
+                  <Button
                     key={`${route.routeName}-${index}`}
                     onClick={() => {
                       navigate(route.path);
                     }}
+                    color="white"
                   >
                     <Typography textAlign="center">
                       {t(route.routeName)}
                     </Typography>
-                  </MenuItem>
+                  </Button>
                 ))}
               </Box>
             )}
