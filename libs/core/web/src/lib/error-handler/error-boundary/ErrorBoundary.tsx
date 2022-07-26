@@ -18,7 +18,7 @@ interface Props {
   t: TFunction<'translation', undefined>;
   navigate: NavigateFunction;
   location: Location;
-  logout: () => Promise<AxiosResponse<any, any>>;
+  logout: () => Promise<AxiosResponse>;
 }
 
 interface State {
