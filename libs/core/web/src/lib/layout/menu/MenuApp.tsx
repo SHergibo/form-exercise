@@ -2,12 +2,14 @@ import { useState, MouseEvent } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { i18nKeys, Languages, languageSwitcher } from '@form-exercise/i18n';
@@ -19,7 +21,6 @@ import {
 
 export function MenuApp() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { isLogged, logout } = useAuthContext();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -39,19 +40,22 @@ export function MenuApp() {
           <Toolbar>
             <MenuTitle />
 
-            {isLogged &&
-              adminRoutesArray.map((route, index) => (
-                <MenuItem
-                  key={`${route.routeName}-${index}`}
-                  onClick={() => {
-                    navigate(route.path);
-                  }}
-                >
-                  <Typography textAlign="center">
-                    {t(route.routeName)}
-                  </Typography>
-                </MenuItem>
-              ))}
+            {isLogged && (
+              <List component="nav">
+                {adminRoutesArray.map((route, index) => (
+                  <Button
+                    component={NavLink}
+                    to={route.path}
+                    key={`${route.routeName}-${index}`}
+                    color="white"
+                  >
+                    <ListItemButton>
+                      <ListItemText primary={t(route.routeName)} />
+                    </ListItemButton>
+                  </Button>
+                ))}
+              </List>
+            )}
 
             <Button
               id="basic-button"

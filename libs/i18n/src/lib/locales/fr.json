@@ -17,6 +17,7 @@
   "menu.title.login": "Connexion",
   "menu.title.moviesList": "Liste de films",
   "menu.title.notFound": "404 page non trouvée!",
+  "page.moviesList.notFound": "Films non trouvés",
   "title.admin": "Administration",
   "title.boundaryError": "Oops une erreur est survenue!",
   "title.login": "Connexion",

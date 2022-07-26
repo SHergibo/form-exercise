@@ -43,4 +43,9 @@ export const i18nKeys = {
     french: 'lang.french',
     english: 'lang.english',
   },
+  page: {
+    moviesList: {
+      notFound: 'page.moviesList.notFound',
+    },
+  },
 };

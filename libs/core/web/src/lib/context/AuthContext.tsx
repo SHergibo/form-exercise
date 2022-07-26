@@ -31,11 +31,14 @@ export function useAuthContext() {
 
 export function AuthContext({ children }: AuthContext) {
   const navigate = useNavigate();
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(
+    Boolean(sessionStorage.getItem('isLogged')) || false
+  );
 
   const login = (data: DataLogin) => {
     return axios.post('/api/login', data).then((response) => {
       if (response.status === 200) {
+        sessionStorage.setItem('isLogged', 'true');
         setIsLogged(true);
         navigate(getRoutePath(AppRoute.ADMIN));
       }
@@ -46,6 +49,7 @@ export function AuthContext({ children }: AuthContext) {
   const logout = () => {
     return axios.post('/api/logout').then((response) => {
       if (response.status === 200) {
+        sessionStorage.clear();
         setIsLogged(false);
         navigate(getRoutePath(AppRoute.LOGIN));
       }

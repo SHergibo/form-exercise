@@ -29,3 +29,9 @@ declare module '@mui/material/IconButton' {
     white: true;
   }
 }
+
+declare module '@mui/material/Button' {
+  interface ButtonPropsColorOverrides {
+    white: true;
+  }
+}

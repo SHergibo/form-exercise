@@ -17,6 +17,7 @@
   "menu.title.login": "Log in",
   "menu.title.moviesList": "Movies list",
   "menu.title.notFound": "404 page not found!",
+  "page.moviesList.notFound": "Movies not found",
   "title.admin": "Administration",
   "title.boundaryError": "Oops something went wrong!",
   "title.login": "Log in",

@@ -76,7 +76,7 @@ export function MoviesList() {
           </FormProvider>
         </Grid>
       </Grid>
-      {isLoading ? (
+      {isLoading && (
         <Grid
           container
           spacing={0}
@@ -89,10 +89,12 @@ export function MoviesList() {
             <CircularProgress />
           </Grid>
         </Grid>
-      ) : (
+      )}
+
+      {!!movies?.Search && (
         <Grid container spacing={2}>
-          {movies &&
-            movies?.Search.map(({ Poster, Title, Year, imdbID }: Movie) => (
+          {movies?.Search.map(({ Poster, Title, Year, imdbID }: Movie) => {
+            return (
               <Grid item xs={2} key={imdbID}>
                 <SmallInfoCard
                   image={Poster}
@@ -100,8 +102,13 @@ export function MoviesList() {
                   title={`${Title} - ${Year}`}
                 />
               </Grid>
-            ))}
+            );
+          })}
         </Grid>
+      )}
+
+      {!!movies?.Search === false && movies !== undefined && (
+        <Typography>{t(i18nKeys.page.moviesList.notFound)}</Typography>
       )}
     </>
   );
