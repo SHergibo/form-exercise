@@ -15,6 +15,6 @@ describe('404 route', () => {
   it('Test click on return last page ', () => {
     cy.visit('/route-not-fount');
 
-    cy.get(`button:contains(${t(i18nKeys.button.returnLastPage)})`).click();
+    cy.get('button').contains(t(i18nKeys.button.returnLastPage)).click();
   });
 });
